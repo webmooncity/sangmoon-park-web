@@ -113,10 +113,13 @@ function App() {
 
           <div className="impact-node">
             <span className="impact-flash" />
+            <span className="impact-rays" />
             <span className="impact-halo" />
+            <span className="impact-orbit" />
             <span className="impact-ring impact-ring-outer" />
             <span className="impact-ring impact-ring-inner" />
             <span className="impact-core" />
+            <span className="impact-void" />
           </div>
 
           <div className="impact-readout">
