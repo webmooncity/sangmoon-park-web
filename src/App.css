@@ -122,7 +122,6 @@ h1 span {
   margin-top: 0.19em;
   color: transparent;
   -webkit-text-stroke: 1.5px var(--white);
-  text-stroke: 1.5px var(--white);
 }
 
 .scroll-cue {
@@ -880,7 +879,6 @@ footer a {
 
   .outline-text {
     -webkit-text-stroke-width: 1px;
-    text-stroke-width: 1px;
   }
 
   .scroll-cue {
