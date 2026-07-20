@@ -15,6 +15,8 @@ function App() {
       </header>
 
       <section className="hero" id="top" aria-labelledby="hero-title">
+        <span className="frame-turn frame-turn-hero" aria-hidden="true" />
+
         <div className="hero-index" aria-hidden="true">
           <span className="frame-runner frame-runner-hero" />
           <span>01</span>
@@ -39,8 +41,9 @@ function App() {
       </section>
 
       <section className="profile" id="profile" aria-labelledby="profile-title">
+        <span className="frame-turn frame-turn-profile" aria-hidden="true" />
+
         <div className="section-label">
-          <span className="frame-runner frame-runner-profile" aria-hidden="true" />
           <span>02</span>
           <p>PROFILE</p>
         </div>
@@ -56,6 +59,7 @@ function App() {
         </div>
 
         <div className="profile-note">
+          <span className="frame-runner frame-runner-profile" aria-hidden="true" />
           <p>
             Thoughtful code. Precise interaction.
             <br />
@@ -66,7 +70,8 @@ function App() {
 
       <section className="details" aria-label="Skills and contact information">
         <div className="details-signal" aria-hidden="true">
-          <span className="details-signal-turn" />
+          <span className="details-signal-index" />
+          <span className="details-signal-bridge" />
           <span className="details-signal-drop" />
         </div>
 
@@ -120,6 +125,7 @@ function App() {
           <span className="impact-line impact-drop" />
 
           <div className="impact-node">
+            <span className="impact-flash" />
             <span className="impact-halo" />
             <span className="impact-ring impact-ring-outer" />
             <span className="impact-ring impact-ring-inner" />
