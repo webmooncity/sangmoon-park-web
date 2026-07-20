@@ -5,15 +5,6 @@ const stacks = ['TypeScript + JavaScript', 'React', 'NextJS', 'Python', 'C']
 function App() {
   return (
     <main className="portfolio">
-      <div className="scroll-journey" aria-hidden="true">
-        <span className="route-segment route-a" />
-        <span className="route-segment route-b" />
-        <span className="route-segment route-c" />
-        <span className="route-segment route-d" />
-        <span className="route-segment route-e" />
-        <span className="journey-pulse" />
-      </div>
-
       <header className="site-header">
         <div className="header-meta" aria-label="Current location and availability">
           <span>SEOUL, KOREA</span>
@@ -25,6 +16,7 @@ function App() {
 
       <section className="hero" id="top" aria-labelledby="hero-title">
         <div className="hero-index" aria-hidden="true">
+          <span className="frame-runner frame-runner-hero" />
           <span>01</span>
           <span>DEVELOPER / 2026</span>
         </div>
@@ -48,6 +40,7 @@ function App() {
 
       <section className="profile" id="profile" aria-labelledby="profile-title">
         <div className="section-label">
+          <span className="frame-runner frame-runner-profile" aria-hidden="true" />
           <span>02</span>
           <p>PROFILE</p>
         </div>
@@ -72,6 +65,11 @@ function App() {
       </section>
 
       <section className="details" aria-label="Skills and contact information">
+        <div className="details-signal" aria-hidden="true">
+          <span className="details-signal-turn" />
+          <span className="details-signal-drop" />
+        </div>
+
         <article className="detail-block stack-block">
           <div className="detail-heading">
             <span>03</span>
@@ -117,10 +115,9 @@ function App() {
         </div>
 
         <div className="impact-field" aria-hidden="true">
-          <span className="impact-frame-left" />
-          <span className="impact-frame-right" />
+          <span className="impact-guide impact-guide-vertical" />
+          <span className="impact-guide impact-guide-horizontal" />
           <span className="impact-line impact-drop" />
-          <span className="impact-line impact-turn" />
 
           <div className="impact-node">
             <span className="impact-halo" />
@@ -130,8 +127,8 @@ function App() {
           </div>
 
           <div className="impact-readout">
-            <span>SIGNAL / 05</span>
-            <span>AMPLIFICATION — 01.00</span>
+            <span>FRAME SIGNAL / 05</span>
+            <span>CONVERGENCE — 01.00</span>
           </div>
         </div>
 
