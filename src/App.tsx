@@ -12,10 +12,6 @@ function App() {
       </div>
 
       <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="Sangmoon Park, top">
-          SP<span className="wordmark-dot">.</span>
-        </a>
-
         <div className="header-meta" aria-label="Current location and availability">
           <span>SEOUL, KOREA</span>
           <span className="availability">
@@ -34,7 +30,7 @@ function App() {
           <p className="eyebrow">WEB DEVELOPER</p>
           <h1 id="hero-title">
             <span>SANGMOON</span>
-            <span className="outline-text name-light-anchor">PARK</span>
+            <span className="outline-text">PARK</span>
           </h1>
           <p className="hero-copy">
             I design and build clear, enduring experiences for the web.
