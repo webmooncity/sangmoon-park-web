@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { copyFileSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'
 
 export default defineConfig({
   plugins: [
@@ -8,7 +8,12 @@ export default defineConfig({
     {
       name: 'cloudflare-static-worker',
       apply: 'build',
+      buildStart() {
+        rmSync('dist', { recursive: true, force: true })
+      },
       closeBundle() {
+        mkdirSync('dist/client', { recursive: true })
+        copyFileSync('public/og.png', 'dist/client/og.png')
         mkdirSync('dist/server', { recursive: true })
         writeFileSync(
           'dist/server/index.js',
@@ -21,6 +26,7 @@ export default defineConfig({
       },
     },
   ],
+  publicDir: false,
   build: {
     outDir: 'dist/client',
     emptyOutDir: true,
