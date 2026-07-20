@@ -26,9 +26,6 @@ function App() {
             <span>SANGMOON</span>
             <span className="outline-text">PARK</span>
           </h1>
-          <p className="hero-copy">
-            I design and build clear, enduring experiences for the web.
-          </p>
         </div>
 
         <a className="scroll-cue" href="#profile" aria-label="Scroll to profile">
@@ -50,7 +47,6 @@ function App() {
             본질에 가까운 웹을 만듭니다.
           </h2>
 
-          <blockquote>“간결함은 궁극의 정교함이다.”</blockquote>
         </div>
 
         <div className="profile-note">
@@ -112,13 +108,11 @@ function App() {
           <span className="impact-guide impact-guide-horizontal" />
 
           <div className="impact-node">
-            <span className="impact-flash" />
-            <span className="impact-rays" />
             <span className="impact-halo" />
-            <span className="impact-orbit" />
             <span className="impact-ring impact-ring-outer" />
             <span className="impact-ring impact-ring-inner" />
-            <span className="impact-core" />
+            <span className="impact-orbit" />
+            <span className="impact-accretion" />
             <span className="impact-void" />
           </div>
 
