@@ -39,6 +39,11 @@ function App() {
         </div>
 
         <div className="hero-content">
+          <div className="hero-meteors" aria-hidden="true">
+            <i className="hero-meteor hero-meteor-1" />
+            <i className="hero-meteor hero-meteor-2" />
+            <i className="hero-meteor hero-meteor-3" />
+          </div>
           <p className="eyebrow">WEB DEVELOPER</p>
           <h1 id="hero-title">
             <span>SANGMOON</span>

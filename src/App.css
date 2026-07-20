@@ -88,10 +88,89 @@ footer {
 }
 
 .hero-content {
+  position: relative;
+  isolation: isolate;
   min-width: 0;
   align-self: center;
   padding: 7vh clamp(32px, 6vw, 110px);
   transform: translateY(-0.6em);
+}
+
+.hero-content > :not(.hero-meteors) {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-meteors {
+  position: absolute;
+  z-index: 0;
+  inset: -16% 1% -18% 4%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-meteor {
+  --meteor-angle: 51deg;
+  --meteor-distance-x: 76px;
+  --meteor-distance-y: 98px;
+  position: absolute;
+  display: block;
+  width: 76px;
+  height: 1px;
+  border-radius: 999px;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 48%,
+    rgba(255, 255, 255, 0.72) 92%,
+    #fff 100%
+  );
+  transform-origin: right center;
+  animation: hero-meteor-fall 8.6s cubic-bezier(0.2, 0.64, 0.34, 1) infinite;
+}
+
+.hero-meteor::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.56);
+  transform: translateY(-50%);
+}
+
+.hero-meteor-1 {
+  top: 6%;
+  left: 56%;
+  width: 88px;
+  animation-delay: -1.2s;
+}
+
+.hero-meteor-2 {
+  --meteor-angle: 55deg;
+  --meteor-distance-x: 58px;
+  --meteor-distance-y: 82px;
+  top: 37%;
+  left: 81%;
+  width: 58px;
+  opacity: 0;
+  animation-duration: 10.4s;
+  animation-delay: -6.3s;
+}
+
+.hero-meteor-3 {
+  --meteor-angle: 47deg;
+  --meteor-distance-x: 48px;
+  --meteor-distance-y: 66px;
+  top: 68%;
+  left: 43%;
+  width: 46px;
+  animation-duration: 9.7s;
+  animation-delay: -3.8s;
 }
 
 .eyebrow {
@@ -883,7 +962,29 @@ footer a {
   }
 }
 
+@keyframes hero-meteor-fall {
+  0%, 8% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(var(--meteor-angle)) scaleX(0.45);
+  }
+  11% {
+    opacity: 0.72;
+  }
+  18% {
+    opacity: 0.32;
+  }
+  23%, 100% {
+    opacity: 0;
+    transform: translate3d(var(--meteor-distance-x), var(--meteor-distance-y), 0)
+      rotate(var(--meteor-angle)) scaleX(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .hero-meteors {
+    display: none;
+  }
+
   h1 > span:first-child {
     background: #fff;
     background-clip: text;
@@ -983,6 +1084,25 @@ footer a {
 
   .hero-content {
     padding: 52px 44px 52px 20px;
+  }
+
+  .hero-meteors {
+    inset: -10% 4% -12% 0;
+  }
+
+  .hero-meteor-1 {
+    left: 51%;
+    width: 64px;
+  }
+
+  .hero-meteor-2 {
+    top: 42%;
+    left: 75%;
+    width: 44px;
+  }
+
+  .hero-meteor-3 {
+    display: none;
   }
 
   .eyebrow {
