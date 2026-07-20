@@ -107,20 +107,14 @@ function App() {
           <span className="impact-guide impact-guide-vertical" />
           <span className="impact-guide impact-guide-horizontal" />
 
-          <div className="impact-node">
-            <span className="impact-halo" />
-            <span className="impact-vortex" />
-            <span className="impact-ring impact-ring-outer" />
-            <span className="impact-ring impact-ring-inner" />
-            <span className="impact-orbit impact-orbit-primary" />
-            <span className="impact-orbit impact-orbit-secondary" />
-            <span className="impact-accretion" />
-            <span className="impact-void" />
-          </div>
-
-          <div className="impact-readout">
-            <span>FRAME SIGNAL / 05</span>
-            <span>CONVERGENCE — 01.00</span>
+          <div className="blackhole-system">
+            <span className="blackhole-aura" />
+            <span className="blackhole-lens" />
+            <span className="blackhole-disk blackhole-disk-back" />
+            <span className="blackhole-ticks" />
+            <span className="blackhole-horizon" />
+            <span className="blackhole-disk blackhole-disk-front" />
+            <span className="blackhole-scan" />
           </div>
         </div>
 

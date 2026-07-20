@@ -411,13 +411,12 @@ footer a:focus-visible::after {
   height: 1px;
 }
 
-.impact-node,
-.impact-node span {
+.blackhole-system,
+.blackhole-system span {
   position: absolute;
 }
 
-.impact-node {
-  position: absolute;
+.blackhole-system {
   z-index: 3;
   top: 42%;
   left: 50%;
@@ -425,124 +424,120 @@ footer a:focus-visible::after {
   height: 1px;
 }
 
-.impact-halo,
-.impact-vortex,
-.impact-orbit,
-.impact-ring,
-.impact-accretion,
-.impact-void {
+.blackhole-system span {
   top: 50%;
   left: 50%;
-  border-radius: 50%;
   opacity: 0;
-  transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%) scale(0.72);
 }
 
-.impact-vortex {
-  width: min(600px, 70vw);
+.blackhole-aura {
+  width: min(760px, 80vw);
   aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 0 7%, rgba(255, 255, 255, 0.16) 10%, rgba(255, 255, 255, 0.035) 27%, transparent 63%);
+  filter: blur(4px);
 }
 
-.impact-vortex::before,
-.impact-orbit::before {
+.blackhole-lens {
+  width: min(430px, 54vw);
+  aspect-ratio: 1;
+  border: 1px solid rgba(245, 245, 242, 0.32);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 26px rgba(255, 255, 255, 0.06),
+    0 0 42px rgba(255, 255, 255, 0.05);
+}
+
+.blackhole-disk {
+  width: min(620px, 76vw);
+  height: min(122px, 14vw);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-7deg) scaleX(0.72);
+}
+
+.blackhole-disk-back {
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  box-shadow: 0 -1px 14px rgba(255, 255, 255, 0.38);
+}
+
+.blackhole-disk-back::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -5px;
   border-radius: 50%;
-}
-
-.impact-vortex::before {
   background: conic-gradient(
-    from 0deg,
-    transparent 0 13%,
-    rgba(255, 255, 255, 0.34) 17%,
-    transparent 22% 46%,
-    rgba(255, 255, 255, 0.58) 50%,
-    transparent 55% 78%,
-    rgba(255, 255, 255, 0.24) 82%,
-    transparent 88% 100%
+    from var(--disk-light-angle),
+    transparent 0deg 178deg,
+    rgba(255, 255, 255, 0.08) 204deg,
+    rgba(255, 255, 255, 0.42) 236deg,
+    rgba(255, 255, 255, 0.94) 268deg,
+    #fff 286deg,
+    rgba(255, 255, 255, 0.92) 302deg,
+    rgba(255, 255, 255, 0.46) 328deg,
+    rgba(255, 255, 255, 0.08) 348deg,
+    transparent 360deg
   );
-  mask-image: radial-gradient(circle, transparent 0 13%, black 20%, rgba(0, 0, 0, 0.72) 38%, transparent 67%);
-  animation: vortex-spin 7s linear infinite;
+  filter:
+    drop-shadow(0 0 3px #fff)
+    drop-shadow(0 0 11px rgba(255, 255, 255, 0.92))
+    drop-shadow(0 0 24px rgba(255, 255, 255, 0.52));
+  mask-image: radial-gradient(closest-side, transparent calc(100% - 7px), #000 calc(100% - 4px));
+  animation: blackhole-disk-light-orbit 3.4s linear infinite;
 }
 
-.impact-halo {
-  width: min(720px, 76vw);
-  aspect-ratio: 1;
-  background: radial-gradient(circle, transparent 0 7%, rgba(255, 255, 255, 0.18) 10%, rgba(255, 255, 255, 0.04) 25%, transparent 62%);
-  filter: blur(3px);
+.blackhole-disk-front {
+  z-index: 5;
+  border-bottom: 3px solid #fff;
+  clip-path: inset(50% -8px -12px -8px);
+  filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 12px rgba(255, 255, 255, 0.68));
 }
 
-.impact-orbit {
-  width: min(480px, 62vw);
-  height: min(102px, 13vw);
-}
-
-.impact-orbit::before {
-  border: 1px solid rgba(245, 245, 242, 0.62);
-  box-shadow: 0 -1px 7px rgba(255, 255, 255, 0.24);
-  animation: orbit-spin 5.8s linear infinite;
-}
-
-.impact-orbit-secondary {
-  width: min(350px, 47vw);
-  height: min(190px, 25vw);
-}
-
-.impact-orbit-secondary::before {
-  border-style: dashed;
-  border-color: rgba(245, 245, 242, 0.42);
-  animation: orbit-spin-reverse 7.4s linear infinite;
-}
-
-.impact-ring {
-  border: 1px solid rgba(255, 255, 255, 0.65);
-}
-
-.impact-ring-outer {
-  width: min(390px, 50vw);
-  aspect-ratio: 1;
-}
-
-.impact-ring-inner {
-  width: min(138px, 19vw);
-  aspect-ratio: 1;
-  border-style: dashed;
-}
-
-.impact-accretion {
-  z-index: 1;
-  width: min(620px, 74vw);
-  height: 2px;
-  border-radius: 50%;
-  background: linear-gradient(90deg, transparent 0, rgba(255, 255, 255, 0.18) 17%, white 48% 52%, rgba(255, 255, 255, 0.18) 83%, transparent 100%);
-  box-shadow:
-    0 0 8px rgba(255, 255, 255, 0.72),
-    0 0 24px rgba(255, 255, 255, 0.16);
-}
-
-.impact-void {
+.blackhole-ticks {
   z-index: 2;
-  width: 62px;
+  width: min(300px, 39vw);
   aspect-ratio: 1;
-  border: 1px solid rgba(245, 245, 242, 0.56);
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.68) 0 0.35deg,
+    transparent 0.35deg 8deg
+  );
+  mask-image: radial-gradient(circle, transparent 0 73%, black 74% 76%, transparent 77%);
+}
+
+.blackhole-horizon {
+  z-index: 4;
+  width: 92px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
   background: #000;
   box-shadow:
-    0 0 0 7px rgba(0, 0, 0, 0.94),
-    0 0 24px 8px rgba(255, 255, 255, 0.12);
+    0 0 0 9px rgba(0, 0, 0, 0.96),
+    0 0 25px 8px rgba(255, 255, 255, 0.14),
+    inset 0 0 18px rgba(255, 255, 255, 0.04);
 }
 
-.impact-readout {
+.blackhole-scan {
+  z-index: 6;
+  width: min(350px, 46vw);
+  aspect-ratio: 1;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+}
+
+.blackhole-scan::after {
+  content: '';
   position: absolute;
-  top: calc(42% + 32px);
+  top: -3px;
   left: 50%;
-  display: flex;
-  width: min(420px, 56vw);
-  justify-content: space-between;
-  color: rgba(255, 255, 255, 0.34);
-  font: 400 0.55rem/1 var(--mono);
-  letter-spacing: 0.12em;
-  opacity: 0;
+  width: 5px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.5);
   transform: translateX(-50%);
 }
 
@@ -626,123 +621,102 @@ footer a {
 }
 
 @supports (animation-timeline: view()) {
-  .impact-halo {
-    animation: impact-halo-in linear both;
+  .blackhole-aura {
+    animation: blackhole-aura-in linear both;
     animation-timeline: --singularity-view;
     animation-range: entry 0% exit 58%;
   }
 
-  .impact-vortex {
-    animation: impact-vortex-in linear both;
+  .blackhole-lens {
+    animation: blackhole-lens-in linear both;
     animation-timeline: --singularity-view;
     animation-range: entry 0% exit 58%;
   }
 
-  .impact-orbit {
-    animation: impact-orbit-in linear both;
+  .blackhole-disk {
+    animation: blackhole-disk-in linear both;
     animation-timeline: --singularity-view;
     animation-range: entry 0% exit 58%;
   }
 
-  .impact-accretion {
-    animation: impact-accretion-in linear both;
+  .blackhole-horizon {
+    animation: blackhole-horizon-in linear both;
     animation-timeline: --singularity-view;
     animation-range: entry 0% exit 58%;
   }
 
-  .impact-ring-outer {
-    animation: impact-ring-outer-in linear both;
-    animation-timeline: --singularity-view;
-    animation-range: entry 0% exit 58%;
+  .blackhole-ticks {
+    animation: blackhole-ticks-in linear both, blackhole-spin 14s linear infinite;
+    animation-timeline: --singularity-view, auto;
+    animation-range: entry 0% exit 58%, normal;
   }
 
-  .impact-ring-inner {
-    animation: impact-ring-inner-in linear both;
-    animation-timeline: --singularity-view;
-    animation-range: entry 0% exit 58%;
-  }
-
-  .impact-void {
-    animation: impact-void-in linear both;
-    animation-timeline: --singularity-view;
-    animation-range: entry 0% exit 58%;
-  }
-
-  .impact-readout {
-    animation: impact-readout-in linear both;
-    animation-timeline: --singularity-view;
-    animation-range: entry 0% exit 58%;
+  .blackhole-scan {
+    animation: blackhole-scan-in linear both, blackhole-spin-reverse 20s linear infinite;
+    animation-timeline: --singularity-view, auto;
+    animation-range: entry 0% exit 58%, normal;
   }
 
 }
 
-@keyframes impact-orbit-in {
-  0%, 24% { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
-  46% { opacity: 0.78; transform: translate(-50%, -50%) scale(1); }
-  78% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.03); }
+@keyframes blackhole-aura-in {
+  0%, 18% { opacity: 0; transform: translate(-50%, -50%) scale(0.68); }
+  44% { opacity: 0.48; transform: translate(-50%, -50%) scale(0.96); }
+  80% { opacity: 0.24; transform: translate(-50%, -50%) scale(1.02); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.08); }
+}
+
+@keyframes blackhole-lens-in {
+  0%, 22% { opacity: 0; transform: translate(-50%, -50%) scale(0.72); }
+  46% { opacity: 0.62; transform: translate(-50%, -50%) scale(1); }
+  82% { opacity: 0.38; transform: translate(-50%, -50%) scale(1.03); }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(1.06); }
 }
 
-@keyframes impact-vortex-in {
-  0%, 20% { opacity: 0; transform: translate(-50%, -50%) scale(0.58); }
-  44% { opacity: 0.78; transform: translate(-50%, -50%) scale(0.96); }
-  80% { opacity: 0.46; transform: translate(-50%, -50%) scale(1.04); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); }
+@keyframes blackhole-disk-in {
+  0%, 22% { opacity: 0; transform: translate(-50%, -50%) rotate(-7deg) scaleX(0.1); }
+  46% { opacity: 1; transform: translate(-50%, -50%) rotate(-7deg) scaleX(1); }
+  82% { opacity: 0.74; transform: translate(-50%, -50%) rotate(-4deg) scaleX(1.03); }
+  100% { opacity: 0; transform: translate(-50%, -50%) rotate(0) scaleX(0.88); }
 }
 
-@keyframes impact-accretion-in {
-  0%, 26% { opacity: 0; transform: translate(-50%, -50%) scaleX(0.08) rotate(-8deg); }
-  48% { opacity: 1; transform: translate(-50%, -50%) scaleX(1) rotate(-7deg); }
-  80% { opacity: 0.7; transform: translate(-50%, -50%) scaleX(1.04) rotate(-4deg); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scaleX(0.86) rotate(0); }
+@keyframes blackhole-horizon-in {
+  0%, 24% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  46% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  84% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.94); }
 }
 
-@keyframes impact-halo-in {
-  0%, 22% { opacity: 0; transform: translate(-50%, -50%) scale(0.62); }
-  44% { opacity: 0.42; transform: translate(-50%, -50%) scale(0.94); }
-  78% { opacity: 0.22; transform: translate(-50%, -50%) scale(1); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.04); }
-}
-
-@keyframes impact-void-in {
+@keyframes blackhole-ticks-in {
   0%, 26% { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
-  48% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  82% { opacity: 0.96; transform: translate(-50%, -50%) scale(1.02); }
+  48% { opacity: 0.76; transform: translate(-50%, -50%) scale(1); }
+  82% { opacity: 0.48; transform: translate(-50%, -50%) scale(1.04); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.08); }
+}
+
+@keyframes blackhole-scan-in {
+  0%, 30% { opacity: 0; transform: translate(-50%, -50%) scale(0.82); }
+  50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+  84% { opacity: 0.42; transform: translate(-50%, -50%) scale(1.03); }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(1.06); }
 }
 
-@keyframes impact-ring-outer-in {
-  0%, 24% { opacity: 0; transform: translate(-50%, -50%) scale(0.74); }
-  48% { opacity: 0.46; transform: translate(-50%, -50%) scale(1); }
-  80% { opacity: 0.24; transform: translate(-50%, -50%) scale(1.03); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.06); }
+@keyframes blackhole-spin {
+  to { rotate: 360deg; }
 }
 
-@keyframes impact-ring-inner-in {
-  0%, 26% { opacity: 0; transform: translate(-50%, -50%) scale(0.72) rotate(0); }
-  48% { opacity: 0.64; transform: translate(-50%, -50%) scale(1) rotate(28deg); }
-  80% { opacity: 0.3; transform: translate(-50%, -50%) scale(1.02) rotate(72deg); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.04) rotate(110deg); }
+@keyframes blackhole-spin-reverse {
+  to { rotate: -360deg; }
 }
 
-@keyframes impact-readout-in {
-  0%, 30% { opacity: 0; transform: translate(-50%, 8px); }
-  50%, 80% { opacity: 0.62; transform: translate(-50%, 0); }
-  100% { opacity: 0; transform: translate(-50%, 0); }
+@property --disk-light-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
 }
 
-@keyframes vortex-spin {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes orbit-spin {
-  from { transform: rotate(-12deg); }
-  to { transform: rotate(348deg); }
-}
-
-@keyframes orbit-spin-reverse {
-  from { transform: rotate(18deg); }
-  to { transform: rotate(-342deg); }
+@keyframes blackhole-disk-light-orbit {
+  to { --disk-light-angle: 360deg; }
 }
 
 @media (max-width: 900px) {
@@ -918,21 +892,29 @@ footer a {
     left: 38px;
   }
 
-  .impact-ring-outer {
-    width: min(300px, 78vw);
+  .blackhole-aura {
+    width: 88vw;
   }
 
-  .impact-ring-inner {
-    width: min(96px, 28vw);
+  .blackhole-lens {
+    width: 68vw;
   }
 
-  .impact-readout {
-    width: calc(100vw - 76px);
-    font-size: 0.48rem;
+  .blackhole-disk {
+    width: 82vw;
+    height: 18vw;
   }
 
-  .impact-readout span:last-child {
-    display: none;
+  .blackhole-ticks {
+    width: 46vw;
+  }
+
+  .blackhole-horizon {
+    width: 68px;
+  }
+
+  .blackhole-scan {
+    width: 58vw;
   }
 
   .finale-copy {
