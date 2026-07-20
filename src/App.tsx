@@ -8,7 +8,6 @@ function App() {
       <div className="scroll-journey" aria-hidden="true">
         <span className="journey-trail" />
         <span className="journey-pulse" />
-        <span className="journey-flare" />
       </div>
 
       <header className="site-header">
@@ -114,6 +113,15 @@ function App() {
         </div>
 
         <div className="signal-field" aria-hidden="true">
+          <div className="signal-guides">
+            <span className="guide-horizontal" />
+            <span className="guide-vertical" />
+            <span className="guide-frame" />
+          </div>
+          <div className="signal-readout">
+            <span>IMPACT NODE / 05</span>
+            <span>Δ 00.001</span>
+          </div>
           <div className="particle-field" />
           <div className="burst-lines" />
           <div className="burst-ring ring-outer" />
