@@ -257,7 +257,7 @@ h1 span {
   background: var(--white);
 }
 
-.stack-list span {
+.stack-list li > span {
   color: var(--muted);
   font: 400 0.62rem/1 var(--mono);
 }
@@ -267,6 +267,10 @@ h1 span {
   font-size: clamp(1.8rem, 3.3vw, 3.6rem);
   font-weight: 500;
   letter-spacing: -0.055em;
+}
+
+.stack-combined .stack-plus {
+  margin: 0 0.24em;
 }
 
 .contact-block {
@@ -459,8 +463,8 @@ footer a:focus-visible::after {
 
 .blackhole-disk-back {
   z-index: 1;
-  border: 1px solid rgba(255, 255, 255, 0.56);
-  box-shadow: 0 -1px 14px rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  box-shadow: 0 -1px 18px rgba(255, 255, 255, 0.58);
 }
 
 .blackhole-disk-back::before {
@@ -470,22 +474,28 @@ footer a:focus-visible::after {
   border-radius: 50%;
   background: conic-gradient(
     from var(--disk-light-angle),
-    transparent 0deg 178deg,
+    transparent 0deg 34deg,
+    rgba(255, 255, 255, 0.2) 52deg,
+    rgba(255, 255, 255, 0.82) 72deg,
+    #fff 84deg,
+    rgba(255, 255, 255, 0.62) 98deg,
+    rgba(255, 255, 255, 0.08) 122deg,
+    transparent 142deg 178deg,
     rgba(255, 255, 255, 0.08) 204deg,
-    rgba(255, 255, 255, 0.42) 236deg,
-    rgba(255, 255, 255, 0.94) 268deg,
+    rgba(255, 255, 255, 0.56) 236deg,
+    #fff 268deg,
     #fff 286deg,
-    rgba(255, 255, 255, 0.92) 302deg,
-    rgba(255, 255, 255, 0.46) 328deg,
+    #fff 302deg,
+    rgba(255, 255, 255, 0.62) 328deg,
     rgba(255, 255, 255, 0.08) 348deg,
     transparent 360deg
   );
   filter:
-    drop-shadow(0 0 3px #fff)
-    drop-shadow(0 0 11px rgba(255, 255, 255, 0.92))
-    drop-shadow(0 0 24px rgba(255, 255, 255, 0.52));
-  mask-image: radial-gradient(closest-side, transparent calc(100% - 7px), #000 calc(100% - 4px));
-  animation: blackhole-disk-light-orbit 3.4s linear infinite;
+    drop-shadow(0 0 4px #fff)
+    drop-shadow(0 0 14px #fff)
+    drop-shadow(0 0 30px rgba(255, 255, 255, 0.68));
+  mask-image: radial-gradient(closest-side, transparent calc(100% - 9px), #000 calc(100% - 5px));
+  animation: blackhole-disk-light-orbit 2.8s linear infinite;
 }
 
 .blackhole-disk-front {
@@ -502,9 +512,10 @@ footer a:focus-visible::after {
   border-radius: 50%;
   background: repeating-conic-gradient(
     from 0deg,
-    rgba(255, 255, 255, 0.68) 0 0.35deg,
-    transparent 0.35deg 8deg
+    rgba(255, 255, 255, 0.88) 0 0.45deg,
+    transparent 0.45deg 8deg
   );
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.72));
   mask-image: radial-gradient(circle, transparent 0 73%, black 74% 76%, transparent 77%);
 }
 
@@ -531,14 +542,14 @@ footer a:focus-visible::after {
 
 .blackhole-scan-1 {
   --orbit-size: min(300px, 42vw);
-  --orbit-line: rgba(255, 255, 255, 0.24);
+  --orbit-line: rgba(255, 255, 255, 0.44);
   --orbit-speed: 16s;
   --orbit-delay: -4s;
 }
 
 .blackhole-scan-2 {
   --orbit-size: min(340px, 48vw);
-  --orbit-line: rgba(255, 255, 255, 0.2);
+  --orbit-line: rgba(255, 255, 255, 0.38);
   --orbit-speed: 20s;
   --orbit-delay: -13s;
   --orbit-direction: reverse;
@@ -546,7 +557,7 @@ footer a:focus-visible::after {
 
 .blackhole-scan-3 {
   --orbit-size: min(380px, 54vw);
-  --orbit-line: rgba(255, 255, 255, 0.18);
+  --orbit-line: rgba(255, 255, 255, 0.33);
   --orbit-speed: 24s;
   --orbit-delay: -7s;
   --orbit-style: dotted;
@@ -554,7 +565,7 @@ footer a:focus-visible::after {
 
 .blackhole-scan-4 {
   --orbit-size: min(425px, 61vw);
-  --orbit-line: rgba(255, 255, 255, 0.15);
+  --orbit-line: rgba(255, 255, 255, 0.29);
   --orbit-speed: 29s;
   --orbit-delay: -21s;
   --orbit-direction: reverse;
@@ -562,7 +573,7 @@ footer a:focus-visible::after {
 
 .blackhole-scan-5 {
   --orbit-size: min(470px, 69vw);
-  --orbit-line: rgba(255, 255, 255, 0.12);
+  --orbit-line: rgba(255, 255, 255, 0.24);
   --orbit-speed: 34s;
   --orbit-delay: -16s;
   --orbit-style: dotted;
@@ -570,7 +581,7 @@ footer a:focus-visible::after {
 
 .blackhole-scan-6 {
   --orbit-size: min(520px, 78vw);
-  --orbit-line: rgba(255, 255, 255, 0.09);
+  --orbit-line: rgba(255, 255, 255, 0.2);
   --orbit-speed: 40s;
   --orbit-delay: -31s;
   --orbit-direction: reverse;
@@ -579,13 +590,13 @@ footer a:focus-visible::after {
 .blackhole-scan::after {
   content: '';
   position: absolute;
-  top: -3px;
+  top: -4px;
   left: 50%;
-  width: 5px;
+  width: 7px;
   aspect-ratio: 1;
   border-radius: 50%;
   background: white;
-  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 5px 2px #fff, 0 0 14px 5px rgba(255, 255, 255, 0.64);
   transform: translateX(-50%);
 }
 
@@ -740,15 +751,15 @@ footer a {
 
 @keyframes blackhole-ticks-in {
   0%, 26% { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
-  48% { opacity: 0.76; transform: translate(-50%, -50%) scale(1); }
-  82% { opacity: 0.48; transform: translate(-50%, -50%) scale(1.04); }
+  48% { opacity: 0.92; transform: translate(-50%, -50%) scale(1); }
+  82% { opacity: 0.62; transform: translate(-50%, -50%) scale(1.04); }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(1.08); }
 }
 
 @keyframes blackhole-scan-in {
   0%, 30% { opacity: 0; transform: translate(-50%, -50%) scale(0.82); }
-  50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
-  84% { opacity: 0.42; transform: translate(-50%, -50%) scale(1.03); }
+  50% { opacity: 0.92; transform: translate(-50%, -50%) scale(1); }
+  84% { opacity: 0.58; transform: translate(-50%, -50%) scale(1.03); }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(1.06); }
 }
 
@@ -872,7 +883,19 @@ footer a {
   }
 
   .scroll-cue {
-    padding: 18px 20px;
+    min-height: 58px;
+    gap: 20px;
+    padding: 16px 44px 16px 20px;
+  }
+
+  .scroll-arrow {
+    display: inline-flex;
+    width: 18px;
+    flex: 0 0 18px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    line-height: 1;
   }
 
   .profile {
@@ -915,9 +938,23 @@ footer a {
   }
 
   .stack-list .stack-combined {
-    font-size: clamp(1.2rem, 6.1vw, 2rem);
-    letter-spacing: -0.07em;
-    white-space: nowrap;
+    display: flex;
+    width: max-content;
+    flex-direction: column;
+    align-items: center;
+    font-size: clamp(1.7rem, 8.8vw, 2.75rem);
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+  }
+
+  .stack-list li:first-child {
+    min-height: 174px;
+  }
+
+  .stack-combined .stack-plus {
+    margin: 0.3em 0;
+    font-size: 0.52em;
+    line-height: 1;
   }
 
   .contact-block address {

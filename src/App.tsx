@@ -68,7 +68,15 @@ function App() {
             {stacks.map((stack, index) => (
               <li key={stack}>
                 <span>{String(index + 1).padStart(2, '0')}</span>
-                <strong className={index === 0 ? 'stack-combined' : undefined}>{stack}</strong>
+                {index === 0 ? (
+                  <strong className="stack-combined">
+                    <span>TypeScript</span>
+                    <span className="stack-plus">+</span>
+                    <span>JavaScript</span>
+                  </strong>
+                ) : (
+                  <strong>{stack}</strong>
+                )}
               </li>
             ))}
           </ul>
