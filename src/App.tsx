@@ -6,7 +6,11 @@ function App() {
   return (
     <main className="portfolio">
       <div className="scroll-journey" aria-hidden="true">
-        <span className="journey-trail" />
+        <span className="route-segment route-a" />
+        <span className="route-segment route-b" />
+        <span className="route-segment route-c" />
+        <span className="route-segment route-d" />
+        <span className="route-segment route-e" />
         <span className="journey-pulse" />
       </div>
 
@@ -112,23 +116,23 @@ function App() {
           <p>SCROLL EVENT — 00:00:01</p>
         </div>
 
-        <div className="signal-field" aria-hidden="true">
-          <div className="signal-guides">
-            <span className="guide-horizontal" />
-            <span className="guide-vertical" />
-            <span className="guide-frame" />
+        <div className="impact-field" aria-hidden="true">
+          <span className="impact-frame-left" />
+          <span className="impact-frame-right" />
+          <span className="impact-line impact-drop" />
+          <span className="impact-line impact-turn" />
+
+          <div className="impact-node">
+            <span className="impact-halo" />
+            <span className="impact-ring impact-ring-outer" />
+            <span className="impact-ring impact-ring-inner" />
+            <span className="impact-core" />
           </div>
-          <div className="signal-readout">
-            <span>IMPACT NODE / 05</span>
-            <span>Δ 00.001</span>
+
+          <div className="impact-readout">
+            <span>SIGNAL / 05</span>
+            <span>AMPLIFICATION — 01.00</span>
           </div>
-          <div className="particle-field" />
-          <div className="burst-lines" />
-          <div className="burst-ring ring-outer" />
-          <div className="burst-ring ring-inner" />
-          <div className="burst-core" />
-          <p className="signal-coordinate coordinate-left">37.5665° N</p>
-          <p className="signal-coordinate coordinate-right">126.9780° E</p>
         </div>
 
         <div className="finale-copy">

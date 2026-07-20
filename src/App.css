@@ -18,37 +18,64 @@
   mix-blend-mode: screen;
 }
 
-.journey-trail,
+.route-segment,
 .journey-pulse {
   position: absolute;
-  right: max(12.5vw, calc((100vw - 1600px) / 2 + 200px));
+  left: max(12.5vw, calc((100vw - 1600px) / 2 + 200px));
 }
 
-.journey-trail {
-  top: 0;
+.route-segment {
   width: 1px;
-  height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.04),
-    rgba(255, 255, 255, 0.2) 22%,
-    white 74%,
-    transparent
-  );
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.32);
-  transform: scaleY(0);
+  background: rgba(255, 255, 255, 0.54);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.22);
   transform-origin: top;
+  opacity: 0;
+}
+
+.route-a {
+  top: 0;
+  height: 30vh;
+}
+
+.route-b {
+  top: 30vh;
+  width: 34px;
+  height: 1px;
+  transform: rotate(38deg);
+  transform-origin: left;
+}
+
+.route-c {
+  top: calc(30vh + 21px);
+  height: 27vh;
+  margin-left: 27px;
+}
+
+.route-d {
+  top: calc(57vh + 21px);
+  width: 42px;
+  height: 1px;
+  margin-left: 27px;
+  transform: rotate(142deg);
+  transform-origin: left;
+}
+
+.route-e {
+  top: calc(57vh + 47px);
+  bottom: 0;
+  margin-left: -6px;
 }
 
 .journey-pulse {
   top: 0;
-  width: 2px;
-  height: 28px;
+  width: 4px;
+  height: 18px;
+  margin-left: -2px;
   border-radius: 50%;
   background: white;
   box-shadow:
-    0 0 5px 1px white,
-    0 0 16px 5px rgba(255, 255, 255, 0.32);
+    0 0 5px 1px rgba(255, 255, 255, 0.92),
+    0 0 14px 4px rgba(255, 255, 255, 0.28);
 }
 
 .site-header {
@@ -393,37 +420,10 @@ footer a:focus-visible::after {
 .singularity::before {
   content: '';
   position: absolute;
-  z-index: -2;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 64px 64px, 64px 64px, 256px 256px, 256px 256px;
-  mask-image: radial-gradient(circle at 50% 36%, black 0, rgba(0, 0, 0, 0.72) 34%, transparent 74%);
-}
-
-.singularity::after {
-  content: '';
-  position: absolute;
   z-index: -1;
-  top: 37%;
-  left: 50%;
-  width: min(780px, 82vw);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 1) 0 0.6%,
-    rgba(255, 255, 255, 0.9) 0.8%,
-    rgba(255, 255, 255, 0.24) 6%,
-    rgba(255, 255, 255, 0.055) 19%,
-    transparent 48%
-  );
-  filter: blur(2px);
-  opacity: 0;
-  transform: translate(-50%, -50%);
+  inset: 82px 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line) 12.5%, var(--line) 87.5%, transparent);
 }
 
 .singularity-topline {
@@ -448,196 +448,123 @@ footer a:focus-visible::after {
   color: rgba(245, 245, 242, 0.7);
 }
 
-.signal-field {
+.impact-field {
   position: relative;
-  height: 78svh;
+  height: 82svh;
   min-height: 610px;
+  overflow: hidden;
 }
 
-.signal-guides {
+.impact-frame-left,
+.impact-frame-right {
   position: absolute;
-  inset: 10% 12.5%;
-  opacity: 0.14;
-}
-
-.signal-guides span {
-  position: absolute;
-  display: block;
-}
-
-.guide-horizontal {
-  top: 48%;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--line) 18%, var(--white) 50%, var(--line) 82%, transparent);
-}
-
-.guide-vertical {
   top: 0;
   bottom: 0;
-  left: 50%;
   width: 1px;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0 13px,
-    rgba(255, 255, 255, 0.42) 13px 14px,
-    transparent 14px 24px
-  );
+  background: rgba(255, 255, 255, 0.11);
 }
 
-.guide-frame {
-  top: 48%;
-  left: 50%;
-  width: min(640px, 66vw);
-  height: min(360px, 38vw);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transform: translate(-50%, -50%);
+.impact-frame-left {
+  left: 12.5%;
 }
 
-.guide-frame::before,
-.guide-frame::after {
-  content: '';
-  position: absolute;
-  width: 18px;
-  height: 18px;
+.impact-frame-right {
+  right: 12.5%;
 }
 
-.guide-frame::before {
-  top: -1px;
-  left: -1px;
-  border-top: 1px solid var(--white);
-  border-left: 1px solid var(--white);
-}
-
-.guide-frame::after {
-  right: -1px;
-  bottom: -1px;
-  border-right: 1px solid var(--white);
-  border-bottom: 1px solid var(--white);
-}
-
-.signal-readout {
+.impact-line {
   position: absolute;
   z-index: 2;
-  top: calc(48% - min(180px, 19vw) - 28px);
-  left: 50%;
-  display: flex;
-  width: min(640px, 66vw);
-  justify-content: space-between;
-  color: rgba(255, 255, 255, 0.34);
-  font: 400 0.55rem/1 var(--mono);
-  letter-spacing: 0.12em;
-  opacity: 0.58;
-  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 0 7px rgba(255, 255, 255, 0.24);
 }
 
-.particle-field,
-.burst-lines,
-.burst-ring,
-.burst-core {
+.impact-drop {
+  top: 0;
+  left: 12.5%;
+  width: 1px;
+  height: 46%;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.impact-turn {
+  top: 46%;
+  left: 12.5%;
+  width: 37.5%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.impact-node,
+.impact-node span {
   position: absolute;
-  top: 48%;
+}
+
+.impact-node {
+  position: absolute;
+  z-index: 3;
+  top: 46%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 1px;
 }
 
-.particle-field {
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(circle at 8% 46%, white 0 1px, transparent 1.5px),
-    radial-gradient(circle at 17% 63%, white 0 1.5px, transparent 2px),
-    radial-gradient(circle at 24% 32%, white 0 1px, transparent 1.5px),
-    radial-gradient(circle at 33% 73%, white 0 1px, transparent 1.5px),
-    radial-gradient(circle at 39% 19%, white 0 1.5px, transparent 2px),
-    radial-gradient(circle at 61% 22%, white 0 1px, transparent 1.5px),
-    radial-gradient(circle at 68% 77%, white 0 1.5px, transparent 2px),
-    radial-gradient(circle at 77% 35%, white 0 1px, transparent 1.5px),
-    radial-gradient(circle at 84% 61%, white 0 1.5px, transparent 2px),
-    radial-gradient(circle at 94% 41%, white 0 1px, transparent 1.5px);
-  opacity: 0;
-}
-
-.burst-lines {
-  width: min(720px, 76vw);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: repeating-conic-gradient(
-    from 7deg,
-    transparent 0deg 10.6deg,
-    rgba(255, 255, 255, 0.42) 10.75deg 10.86deg,
-    transparent 11deg 16deg
-  );
-  mask-image: radial-gradient(circle, transparent 0 3%, black 8%, transparent 68%);
-  opacity: 0;
-}
-
-.burst-ring {
-  border: 1px solid rgba(255, 255, 255, 0.46);
+.impact-halo,
+.impact-ring,
+.impact-core {
+  top: 50%;
+  left: 50%;
   border-radius: 50%;
   opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
 }
 
-.ring-outer {
-  width: min(380px, 48vw);
+.impact-halo {
+  width: min(640px, 70vw);
   aspect-ratio: 1;
-  box-shadow:
-    0 0 0 32px rgba(255, 255, 255, 0.018),
-    0 0 72px 18px rgba(255, 255, 255, 0.1);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.04) 22%, transparent 64%);
+  filter: blur(4px);
 }
 
-.ring-inner {
-  width: min(144px, 20vw);
+.impact-ring {
+  border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.impact-ring-outer {
+  width: min(360px, 48vw);
+  aspect-ratio: 1;
+}
+
+.impact-ring-inner {
+  width: min(112px, 18vw);
   aspect-ratio: 1;
   border-style: dashed;
 }
 
-.burst-core {
-  width: 8px;
+.impact-core {
+  width: 7px;
   aspect-ratio: 1;
-  border-radius: 50%;
   background: white;
   box-shadow:
-    0 0 6px 3px white,
-    0 0 22px 10px rgba(255, 255, 255, 0.76),
-    0 0 72px 30px rgba(255, 255, 255, 0.32),
-    0 0 180px 70px rgba(255, 255, 255, 0.1);
-  opacity: 0;
+    0 0 5px 2px white,
+    0 0 20px 8px rgba(255, 255, 255, 0.68),
+    0 0 64px 24px rgba(255, 255, 255, 0.22);
 }
 
-.signal-coordinate {
+.impact-readout {
   position: absolute;
-  top: 48%;
-  margin: 0;
+  top: calc(46% + 32px);
+  left: 50%;
+  display: flex;
+  width: min(420px, 56vw);
+  justify-content: space-between;
   color: rgba(255, 255, 255, 0.34);
-  font: 400 0.58rem/1 var(--mono);
+  font: 400 0.55rem/1 var(--mono);
   letter-spacing: 0.12em;
-}
-
-.signal-coordinate::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: clamp(50px, 8vw, 130px);
-  height: 1px;
-  background: currentColor;
-}
-
-.coordinate-left {
-  right: calc(50% + min(260px, 31vw));
-}
-
-.coordinate-left::after {
-  left: calc(100% + 18px);
-}
-
-.coordinate-right {
-  left: calc(50% + min(260px, 31vw));
-}
-
-.coordinate-right::after {
-  right: calc(100% + 18px);
+  opacity: 0;
+  transform: translateX(-50%);
 }
 
 .finale-copy {
@@ -716,57 +643,47 @@ footer a {
   50% { transform: translateY(5px); }
 }
 
-@keyframes slow-rotation {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes reverse-rotation {
-  to { transform: translate(-50%, -50%) rotate(-360deg); }
-}
-
 @supports (animation-timeline: view()) {
-  .singularity::after {
-    animation: halo-impact linear both;
+  .impact-drop {
+    animation: impact-drop-in linear both;
     animation-timeline: view();
-    animation-range: entry 0% cover 72%;
+    animation-range: entry 0% cover 68%;
   }
 
-  .burst-lines {
-    animation: burst-impact linear both, slow-rotation 40s linear infinite;
-    animation-timeline: view(), auto;
-    animation-range: entry 0% cover 72%, normal;
-  }
-
-  .ring-outer,
-  .ring-inner {
-    animation: ring-impact linear both;
+  .impact-turn {
+    animation: impact-turn-in linear both;
     animation-timeline: view();
-    animation-range: entry 0% cover 72%;
+    animation-range: entry 0% cover 68%;
   }
 
-  .ring-inner {
-    animation: ring-impact linear both, reverse-rotation 18s linear infinite;
-    animation-timeline: view(), auto;
-    animation-range: entry 0% cover 72%, normal;
-  }
-
-  .particle-field {
-    animation: particle-impact linear both;
+  .impact-halo {
+    animation: impact-halo-in linear both;
     animation-timeline: view();
-    animation-range: entry 0% cover 72%;
+    animation-range: entry 0% cover 68%;
   }
 
-  .burst-core {
-    animation: core-impact linear both;
+  .impact-ring-outer {
+    animation: impact-ring-outer-in linear both;
     animation-timeline: view();
-    animation-range: entry 0% cover 72%;
+    animation-range: entry 0% cover 68%;
   }
 
-  .signal-guides,
-  .signal-readout {
-    animation: guides-focus linear both;
+  .impact-ring-inner {
+    animation: impact-ring-inner-in linear both;
     animation-timeline: view();
-    animation-range: entry 0% cover 72%;
+    animation-range: entry 0% cover 68%;
+  }
+
+  .impact-core {
+    animation: impact-core-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 68%;
+  }
+
+  .impact-readout {
+    animation: impact-readout-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 68%;
   }
 
   .finale-copy h2 {
@@ -782,91 +699,101 @@ footer a {
     animation-timeline: scroll(root);
   }
 
-  .journey-trail {
-    animation: journey-trace linear both;
+  .route-a {
+    animation: route-a-reveal linear both;
     animation-timeline: scroll(root);
   }
+
+  .route-b { animation: route-b-reveal linear both; animation-timeline: scroll(root); }
+  .route-c { animation: route-c-reveal linear both; animation-timeline: scroll(root); }
+  .route-d { animation: route-d-reveal linear both; animation-timeline: scroll(root); }
+  .route-e { animation: route-e-reveal linear both; animation-timeline: scroll(root); }
 
   .journey-pulse {
     animation: frame-current linear both;
     animation-timeline: scroll(root);
   }
 
-  .hero::after {
-    animation: hero-frame-awaken linear both;
+  .hero-index {
+    animation: left-frame-awaken linear both;
     animation-timeline: scroll(root);
   }
 }
 
 @keyframes journey-visibility {
-  0% { opacity: 0.15; }
-  7%, 34% { opacity: 0.92; }
-  58% { opacity: 0.42; }
-  72%, 100% { opacity: 0; }
-}
-
-@keyframes journey-trace {
-  0% { transform: scaleY(0.06); opacity: 0.18; }
-  12% { transform: scaleY(0.52); opacity: 0.92; }
-  34% { transform: scaleY(0.86); opacity: 0.72; }
-  58% { transform: scaleY(1); opacity: 0.32; }
-  72%, 100% { transform: scaleY(1); opacity: 0; }
+  0% { opacity: 0.2; }
+  8%, 42% { opacity: 0.9; }
+  65% { opacity: 0.34; }
+  76%, 100% { opacity: 0; }
 }
 
 @keyframes frame-current {
-  0% { transform: translateY(7vh); opacity: 0; }
-  5% { opacity: 0.92; }
-  38% { transform: translateY(72vh); opacity: 1; }
-  62% { transform: translateY(98vh); opacity: 0.28; }
-  70%, 100% { transform: translateY(110vh); opacity: 0; }
+  0% { transform: translate(0, 5vh); opacity: 0; }
+  5% { opacity: 0.96; }
+  20% { transform: translate(0, 29vh); }
+  24% { transform: translate(27px, calc(30vh + 21px)); }
+  44% { transform: translate(27px, calc(57vh + 20px)); }
+  49% { transform: translate(-6px, calc(57vh + 47px)); }
+  68% { transform: translate(-6px, 98vh); opacity: 0.5; }
+  76%, 100% { transform: translate(-6px, 108vh); opacity: 0; }
 }
 
-@keyframes hero-frame-awaken {
-  0% { opacity: 0.28; background: var(--line); box-shadow: none; }
-  30% { opacity: 0.95; background: rgba(255, 255, 255, 0.82); box-shadow: 0 0 9px rgba(255, 255, 255, 0.28); }
-  100% { opacity: 0.4; background: var(--line); box-shadow: none; }
+@keyframes route-a-reveal { 0% { opacity: 0.12; } 8%, 40% { opacity: 0.78; } 72%, 100% { opacity: 0; } }
+@keyframes route-b-reveal { 0%, 14% { opacity: 0; } 24%, 43% { opacity: 0.78; } 72%, 100% { opacity: 0; } }
+@keyframes route-c-reveal { 0%, 20% { opacity: 0; } 31%, 48% { opacity: 0.7; } 72%, 100% { opacity: 0; } }
+@keyframes route-d-reveal { 0%, 38% { opacity: 0; } 49%, 58% { opacity: 0.72; } 72%, 100% { opacity: 0; } }
+@keyframes route-e-reveal { 0%, 45% { opacity: 0; } 56%, 68% { opacity: 0.64; } 76%, 100% { opacity: 0; } }
+
+@keyframes left-frame-awaken {
+  0% { border-right-color: var(--line); box-shadow: none; }
+  24% { border-right-color: rgba(255, 255, 255, 0.82); box-shadow: 5px 0 10px -7px rgba(255, 255, 255, 0.72); }
+  100% { border-right-color: var(--line); box-shadow: none; }
 }
 
-@keyframes halo-impact {
-  0%, 30% { opacity: 0; scale: 0.05; }
-  47% { opacity: 0.72; scale: 0.62; }
-  62% { opacity: 0.22; scale: 0.94; }
-  82%, 100% { opacity: 0; scale: 1.18; }
+@keyframes impact-drop-in {
+  0%, 14% { transform: scaleY(0); opacity: 0; }
+  38%, 72% { transform: scaleY(1); opacity: 0.9; }
+  92%, 100% { transform: scaleY(1); opacity: 0.12; }
 }
 
-@keyframes burst-impact {
-  0%, 30% { opacity: 0; scale: 0.08; }
-  48% { opacity: 0.52; scale: 0.72; }
-  64% { opacity: 0.16; scale: 0.96; }
-  84%, 100% { opacity: 0; scale: 1.15; }
+@keyframes impact-turn-in {
+  0%, 34% { transform: scaleX(0); opacity: 0; }
+  50%, 72% { transform: scaleX(1); opacity: 0.9; }
+  92%, 100% { transform: scaleX(1); opacity: 0.12; }
 }
 
-@keyframes ring-impact {
-  0%, 32% { opacity: 0; scale: 0.05; }
-  49% { opacity: 0.66; scale: 0.7; }
-  68% { opacity: 0.14; scale: 0.96; }
-  86%, 100% { opacity: 0; scale: 1.2; }
+@keyframes impact-core-in {
+  0%, 45% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+  55% { opacity: 1; transform: translate(-50%, -50%) scale(1.35); }
+  69% { opacity: 0.55; transform: translate(-50%, -50%) scale(0.82); }
+  88%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
 }
 
-@keyframes particle-impact {
-  0%, 34% { opacity: 0; scale: 0.18; }
-  51% { opacity: 0.42; scale: 0.68; }
-  70% { opacity: 0.1; scale: 0.98; }
-  88%, 100% { opacity: 0; scale: 1.16; }
+@keyframes impact-halo-in {
+  0%, 46% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+  59% { opacity: 0.86; transform: translate(-50%, -50%) scale(0.72); }
+  76% { opacity: 0.18; transform: translate(-50%, -50%) scale(1); }
+  94%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.12); }
 }
 
-@keyframes core-impact {
-  0%, 36% { opacity: 0; transform: translate(-50%, -50%) scale(0.12); }
-  48% { opacity: 1; transform: translate(-50%, -50%) scale(1.12); }
-  62% { opacity: 0.42; transform: translate(-50%, -50%) scale(0.72); }
-  78%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
+@keyframes impact-ring-outer-in {
+  0%, 47% { opacity: 0; transform: translate(-50%, -50%) scale(0.04); }
+  62% { opacity: 0.72; transform: translate(-50%, -50%) scale(0.7); }
+  82% { opacity: 0.08; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.08); }
 }
 
-@keyframes guides-focus {
-  0%, 24% { opacity: 0.08; }
-  46% { opacity: 0.4; }
-  70% { opacity: 0.14; }
-  100% { opacity: 0.08; }
+@keyframes impact-ring-inner-in {
+  0%, 49% { opacity: 0; transform: translate(-50%, -50%) scale(0.08) rotate(0); }
+  61% { opacity: 0.88; transform: translate(-50%, -50%) scale(0.82) rotate(32deg); }
+  82% { opacity: 0.1; transform: translate(-50%, -50%) scale(1) rotate(76deg); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.04) rotate(100deg); }
+}
+
+@keyframes impact-readout-in {
+  0%, 45% { opacity: 0; transform: translate(-50%, 10px); }
+  58%, 76% { opacity: 0.72; transform: translate(-50%, 0); }
+  94%, 100% { opacity: 0.2; transform: translate(-50%, 0); }
 }
 
 @keyframes title-reveal {
@@ -887,9 +814,9 @@ footer a {
     right: 64px;
   }
 
-  .journey-trail,
+  .route-segment,
   .journey-pulse {
-    right: 64px;
+    left: 64px;
   }
 
   .profile {
@@ -913,7 +840,7 @@ footer a {
     grid-template-columns: 42px 1fr auto;
   }
 
-  .signal-field {
+  .impact-field {
     min-height: 560px;
   }
 
@@ -951,9 +878,9 @@ footer a {
     display: block;
   }
 
-  .journey-trail,
+  .route-segment,
   .journey-pulse {
-    right: 38px;
+    left: 38px;
   }
 
   .hero-index {
@@ -1058,38 +985,40 @@ footer a {
     display: none;
   }
 
-  .signal-field {
-    height: 62svh;
+  .impact-field {
+    height: 68svh;
     min-height: 500px;
   }
 
-  .ring-outer {
-    width: min(340px, 78vw);
+  .impact-frame-left,
+  .impact-drop {
+    left: 38px;
   }
 
-  .ring-inner {
-    width: min(150px, 35vw);
+  .impact-frame-right {
+    right: 38px;
   }
 
-  .signal-coordinate {
-    display: none;
+  .impact-turn {
+    left: 38px;
+    width: calc(50% - 38px);
   }
 
-  .signal-guides {
-    inset: 12% 38px;
+  .impact-ring-outer {
+    width: min(300px, 78vw);
   }
 
-  .guide-frame,
-  .signal-readout {
+  .impact-ring-inner {
+    width: min(96px, 28vw);
+  }
+
+  .impact-readout {
     width: calc(100vw - 76px);
+    font-size: 0.48rem;
   }
 
-  .guide-frame {
-    height: 210px;
-  }
-
-  .signal-readout {
-    top: calc(48% - 133px);
+  .impact-readout span:last-child {
+    display: none;
   }
 
   .finale-copy {
