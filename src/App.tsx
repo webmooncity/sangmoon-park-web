@@ -1,6 +1,6 @@
 import './App.css'
 
-const stacks = ['TypeScript', 'JavaScript', 'React', 'Python']
+const stacks = ['TypeScript + JavaScript', 'React', 'NextJS', 'Python', 'C']
 
 function App() {
   return (
@@ -102,6 +102,39 @@ function App() {
             </div>
           </address>
         </article>
+      </section>
+
+      <section className="singularity" aria-labelledby="singularity-title">
+        <div className="singularity-topline">
+          <span>05</span>
+          <p>ORIGIN / OUTPUT</p>
+          <p>SCROLL EVENT — 00:00:01</p>
+        </div>
+
+        <div className="signal-field" aria-hidden="true">
+          <div className="particle-field" />
+          <div className="burst-lines" />
+          <div className="burst-ring ring-outer" />
+          <div className="burst-ring ring-inner" />
+          <div className="burst-core" />
+          <p className="signal-coordinate coordinate-left">37.5665° N</p>
+          <p className="signal-coordinate coordinate-right">126.9780° E</p>
+        </div>
+
+        <div className="finale-copy">
+          <div className="finale-label">
+            <span>FROM A SINGLE POINT</span>
+            <span>TO AN INFINITE WEB</span>
+          </div>
+          <h2 id="singularity-title">
+            <span>CODE BECOMES</span>
+            <span>EXPERIENCE.</span>
+          </h2>
+          <div className="finale-meta">
+            <p>SANGMOON PARK / WEB DEVELOPER</p>
+            <p>BUILDING THE CLEAR, THE USEFUL, THE ENDURING.</p>
+          </div>
+        </div>
       </section>
 
       <footer>
