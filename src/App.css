@@ -463,8 +463,17 @@ footer a:focus-visible::after {
 
 .blackhole-disk-back {
   z-index: 1;
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  box-shadow: 0 -1px 18px rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0 58%,
+    rgba(255, 255, 255, 0.02) 72%,
+    rgba(255, 255, 255, 0.06) 88%,
+    rgba(255, 255, 255, 0.16) 100%
+  );
+  box-shadow:
+    0 0 3px rgba(255, 255, 255, 0.24),
+    inset 0 0 12px rgba(255, 255, 255, 0.08);
 }
 
 .blackhole-disk-back::before {
@@ -474,35 +483,31 @@ footer a:focus-visible::after {
   border-radius: 50%;
   background: conic-gradient(
     from var(--disk-light-angle),
-    transparent 0deg 34deg,
-    rgba(255, 255, 255, 0.2) 52deg,
-    rgba(255, 255, 255, 0.82) 72deg,
-    #fff 84deg,
-    rgba(255, 255, 255, 0.62) 98deg,
-    rgba(255, 255, 255, 0.08) 122deg,
-    transparent 142deg 178deg,
-    rgba(255, 255, 255, 0.08) 204deg,
-    rgba(255, 255, 255, 0.56) 236deg,
-    #fff 268deg,
-    #fff 286deg,
-    #fff 302deg,
-    rgba(255, 255, 255, 0.62) 328deg,
-    rgba(255, 255, 255, 0.08) 348deg,
-    transparent 360deg
+    transparent 0deg 54deg,
+    rgba(255, 255, 255, 0.29) 62deg,
+    #fff 72deg 92deg,
+    rgba(255, 255, 255, 0.88) 100deg,
+    transparent 112deg 240deg,
+    rgba(255, 255, 255, 0.31) 250deg,
+    #fff 266deg 300deg,
+    rgba(255, 255, 255, 0.94) 308deg,
+    transparent 324deg 360deg
   );
+  opacity: 1;
   filter:
-    drop-shadow(0 0 4px #fff)
-    drop-shadow(0 0 14px #fff)
-    drop-shadow(0 0 30px rgba(255, 255, 255, 0.68));
-  mask-image: radial-gradient(closest-side, transparent calc(100% - 9px), #000 calc(100% - 5px));
+    brightness(1.3)
+    contrast(1.12)
+    drop-shadow(0 0 2px #fff)
+    drop-shadow(0 0 5px #fff);
+  mask-image: radial-gradient(closest-side, transparent calc(100% - 12px), #000 calc(100% - 8px));
   animation: blackhole-disk-light-orbit 2.8s linear infinite;
 }
 
 .blackhole-disk-front {
   z-index: 5;
-  border-bottom: 3px solid #fff;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.62);
   clip-path: inset(50% -8px -12px -8px);
-  filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 12px rgba(255, 255, 255, 0.68));
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.38));
 }
 
 .blackhole-ticks {
