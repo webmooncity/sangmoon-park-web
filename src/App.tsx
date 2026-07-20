@@ -15,10 +15,7 @@ function App() {
       </header>
 
       <section className="hero" id="top" aria-labelledby="hero-title">
-        <span className="frame-turn frame-turn-hero" aria-hidden="true" />
-
         <div className="hero-index" aria-hidden="true">
-          <span className="frame-runner frame-runner-hero" />
           <span>01</span>
           <span>DEVELOPER / 2026</span>
         </div>
@@ -41,8 +38,6 @@ function App() {
       </section>
 
       <section className="profile" id="profile" aria-labelledby="profile-title">
-        <span className="frame-turn frame-turn-profile" aria-hidden="true" />
-
         <div className="section-label">
           <span>02</span>
           <p>PROFILE</p>
@@ -59,7 +54,6 @@ function App() {
         </div>
 
         <div className="profile-note">
-          <span className="frame-runner frame-runner-profile" aria-hidden="true" />
           <p>
             Thoughtful code. Precise interaction.
             <br />
@@ -69,12 +63,6 @@ function App() {
       </section>
 
       <section className="details" aria-label="Skills and contact information">
-        <div className="details-signal" aria-hidden="true">
-          <span className="details-signal-index" />
-          <span className="details-signal-bridge" />
-          <span className="details-signal-drop" />
-        </div>
-
         <article className="detail-block stack-block">
           <div className="detail-heading">
             <span>03</span>
@@ -122,7 +110,6 @@ function App() {
         <div className="impact-field" aria-hidden="true">
           <span className="impact-guide impact-guide-vertical" />
           <span className="impact-guide impact-guide-horizontal" />
-          <span className="impact-line impact-drop" />
 
           <div className="impact-node">
             <span className="impact-flash" />
