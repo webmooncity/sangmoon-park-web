@@ -109,9 +109,11 @@ function App() {
 
           <div className="impact-node">
             <span className="impact-halo" />
+            <span className="impact-vortex" />
             <span className="impact-ring impact-ring-outer" />
             <span className="impact-ring impact-ring-inner" />
-            <span className="impact-orbit" />
+            <span className="impact-orbit impact-orbit-primary" />
+            <span className="impact-orbit impact-orbit-secondary" />
             <span className="impact-accretion" />
             <span className="impact-void" />
           </div>
