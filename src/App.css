@@ -847,7 +847,7 @@ footer a {
   }
 
   .hero-content {
-    padding: 52px 20px;
+    padding: 52px 44px 52px 20px;
   }
 
   .eyebrow {
@@ -857,7 +857,7 @@ footer a {
 
   h1 {
     max-width: 100%;
-    font-size: clamp(2.8rem, 15.8vw, 4.9rem);
+    font-size: clamp(2.65rem, 13.5vw, 4.2rem);
     line-height: 0.78;
     letter-spacing: -0.085em;
   }
