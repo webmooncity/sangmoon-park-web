@@ -835,10 +835,6 @@ footer a {
     padding: 0 18px;
   }
 
-  .header-meta > span:first-child {
-    display: none;
-  }
-
   .header-meta,
   .hero-index,
   .section-label,
