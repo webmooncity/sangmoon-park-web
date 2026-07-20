@@ -88,6 +88,7 @@ footer {
 }
 
 .hero-content {
+  min-width: 0;
   align-self: center;
   padding: 7vh clamp(32px, 6vw, 110px);
 }
@@ -387,8 +388,8 @@ footer a:focus-visible::after {
 
 .impact-field {
   position: relative;
-  height: 82svh;
-  min-height: 610px;
+  height: 65svh;
+  min-height: 500px;
   overflow: hidden;
 }
 
@@ -855,8 +856,19 @@ footer a {
   }
 
   h1 {
-    font-size: clamp(3.65rem, 19vw, 6rem);
-    line-height: 0.76;
+    max-width: 100%;
+    font-size: clamp(2.8rem, 15.8vw, 4.9rem);
+    line-height: 0.78;
+    letter-spacing: -0.085em;
+  }
+
+  h1 span {
+    white-space: nowrap;
+  }
+
+  .outline-text {
+    -webkit-text-stroke-width: 1px;
+    text-stroke-width: 1px;
   }
 
   .scroll-cue {
@@ -902,6 +914,12 @@ footer a {
     font-size: clamp(1.7rem, 8.8vw, 2.75rem);
   }
 
+  .stack-list .stack-combined {
+    font-size: clamp(1.2rem, 6.1vw, 2rem);
+    letter-spacing: -0.07em;
+    white-space: nowrap;
+  }
+
   .contact-block address {
     padding: 72px 20px;
   }
@@ -933,8 +951,8 @@ footer a {
   }
 
   .impact-field {
-    height: 68svh;
-    min-height: 500px;
+    height: 58svh;
+    min-height: 420px;
   }
 
   .impact-guide-horizontal {
