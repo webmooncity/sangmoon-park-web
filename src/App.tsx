@@ -42,9 +42,9 @@ function App() {
 
         <div className="profile-main">
           <h2 id="profile-title">
-            복잡함을 덜어내고,
+            “복잡함을 덜어내고,
             <br />
-            본질에 가까운 웹을 만듭니다.
+            본질에 가까운 웹을 만듭니다.”
           </h2>
 
         </div>
