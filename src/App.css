@@ -522,10 +522,57 @@ footer a:focus-visible::after {
 
 .blackhole-scan {
   z-index: 6;
-  width: min(350px, 46vw);
+  width: var(--orbit-size);
   aspect-ratio: 1;
-  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border: 1px var(--orbit-style, dashed) var(--orbit-line);
   border-radius: 50%;
+}
+
+.blackhole-scan-1 {
+  --orbit-size: min(300px, 42vw);
+  --orbit-line: rgba(255, 255, 255, 0.24);
+  --orbit-speed: 16s;
+  --orbit-delay: -4s;
+}
+
+.blackhole-scan-2 {
+  --orbit-size: min(340px, 48vw);
+  --orbit-line: rgba(255, 255, 255, 0.2);
+  --orbit-speed: 20s;
+  --orbit-delay: -13s;
+  --orbit-direction: reverse;
+}
+
+.blackhole-scan-3 {
+  --orbit-size: min(380px, 54vw);
+  --orbit-line: rgba(255, 255, 255, 0.18);
+  --orbit-speed: 24s;
+  --orbit-delay: -7s;
+  --orbit-style: dotted;
+}
+
+.blackhole-scan-4 {
+  --orbit-size: min(425px, 61vw);
+  --orbit-line: rgba(255, 255, 255, 0.15);
+  --orbit-speed: 29s;
+  --orbit-delay: -21s;
+  --orbit-direction: reverse;
+}
+
+.blackhole-scan-5 {
+  --orbit-size: min(470px, 69vw);
+  --orbit-line: rgba(255, 255, 255, 0.12);
+  --orbit-speed: 34s;
+  --orbit-delay: -16s;
+  --orbit-style: dotted;
+}
+
+.blackhole-scan-6 {
+  --orbit-size: min(520px, 78vw);
+  --orbit-line: rgba(255, 255, 255, 0.09);
+  --orbit-speed: 40s;
+  --orbit-delay: -31s;
+  --orbit-direction: reverse;
 }
 
 .blackhole-scan::after {
@@ -652,7 +699,10 @@ footer a {
   }
 
   .blackhole-scan {
-    animation: blackhole-scan-in linear both, blackhole-spin-reverse 20s linear infinite;
+    animation:
+      blackhole-scan-in linear both,
+      blackhole-spin-reverse var(--orbit-speed) linear var(--orbit-delay) infinite;
+    animation-direction: normal, var(--orbit-direction, normal);
     animation-timeline: --singularity-view, auto;
     animation-range: entry 0% exit 58%, normal;
   }
@@ -911,10 +961,6 @@ footer a {
 
   .blackhole-horizon {
     width: 68px;
-  }
-
-  .blackhole-scan {
-    width: 58vw;
   }
 
   .finale-copy {

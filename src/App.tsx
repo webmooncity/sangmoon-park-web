@@ -114,7 +114,12 @@ function App() {
             <span className="blackhole-ticks" />
             <span className="blackhole-horizon" />
             <span className="blackhole-disk blackhole-disk-front" />
-            <span className="blackhole-scan" />
+            <span className="blackhole-scan blackhole-scan-1" />
+            <span className="blackhole-scan blackhole-scan-2" />
+            <span className="blackhole-scan blackhole-scan-3" />
+            <span className="blackhole-scan blackhole-scan-4" />
+            <span className="blackhole-scan blackhole-scan-5" />
+            <span className="blackhole-scan blackhole-scan-6" />
           </div>
         </div>
 
