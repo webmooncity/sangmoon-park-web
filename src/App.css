@@ -119,10 +119,27 @@ h1 span {
   display: block;
 }
 
+h1 > span:first-child {
+  color: transparent;
+  background: linear-gradient(
+    106deg,
+    rgba(255, 255, 255, 0.88) 0 38%,
+    #fff 46% 50%,
+    rgba(255, 255, 255, 0.9) 58% 100%
+  );
+  background-position: 120% 50%;
+  background-size: 250% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hero-name-scan 8.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
 .outline-text {
   margin-top: 0.19em;
   color: transparent;
   -webkit-text-stroke: 1.5px var(--white);
+  animation: hero-outline-signal 8.8s cubic-bezier(0.65, 0, 0.35, 1) 220ms infinite;
 }
 
 .scroll-cue {
@@ -661,6 +678,32 @@ footer a:focus-visible::after {
   gap: 0.16em;
 }
 
+.finale-heading-line > span,
+.finale-copy h2 > span:last-child {
+  color: transparent;
+  background: linear-gradient(
+    108deg,
+    rgba(255, 255, 255, 0.72) 0 34%,
+    #fff 43% 49%,
+    rgba(255, 255, 255, 0.76) 58% 100%
+  );
+  background-position: 120% 50%;
+  background-size: 260% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.14));
+  animation: finale-text-scan 7.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.finale-heading-line > span:nth-child(2) {
+  animation-delay: 160ms;
+}
+
+.finale-copy h2 > span:last-child {
+  animation-delay: 320ms;
+}
+
 .finale-meta {
   position: relative;
   padding-top: 24px;
@@ -813,6 +856,54 @@ footer a {
 
 @keyframes blackhole-disk-light-orbit {
   to { --disk-light-angle: 360deg; }
+}
+
+@keyframes finale-text-scan {
+  0%, 18% { background-position: 120% 50%; }
+  58%, 100% { background-position: -70% 50%; }
+}
+
+@keyframes hero-name-scan {
+  0%, 24% { background-position: 120% 50%; }
+  58%, 100% { background-position: -65% 50%; }
+}
+
+@keyframes hero-outline-signal {
+  0%, 28%, 100% {
+    opacity: 0.82;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+  }
+  48% {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.22));
+  }
+  64% {
+    opacity: 0.88;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.08));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  h1 > span:first-child {
+    background: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: none;
+  }
+
+  .outline-text {
+    opacity: 1;
+    filter: none;
+    animation: none;
+  }
+
+  .finale-heading-line > span,
+  .finale-copy h2 > span:last-child {
+    background: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: none;
+  }
 }
 
 @media (min-width: 901px) {
