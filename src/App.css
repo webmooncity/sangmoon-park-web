@@ -9,6 +9,63 @@
   overflow: hidden;
 }
 
+.scroll-journey {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.journey-trail,
+.journey-pulse,
+.journey-flare {
+  position: absolute;
+  left: 50%;
+}
+
+.journey-trail {
+  top: 17vh;
+  width: 1px;
+  height: 64vh;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.18) 8%,
+    white 72%,
+    transparent
+  );
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.journey-pulse {
+  top: 17vh;
+  width: 5px;
+  height: 34px;
+  border-radius: 50%;
+  background: white;
+  box-shadow:
+    0 0 7px 2px white,
+    0 0 24px 8px rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, 0);
+}
+
+.journey-flare {
+  top: 54vh;
+  width: 8px;
+  aspect-ratio: 1;
+  border: 1px solid white;
+  border-radius: 50%;
+  box-shadow:
+    0 0 12px 4px white,
+    0 0 56px 22px rgba(255, 255, 255, 0.45);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+
 .site-header {
   min-height: 80px;
   display: grid;
@@ -126,10 +183,23 @@ h1 span {
 }
 
 .outline-text {
+  position: relative;
   margin-top: 0.19em;
   color: transparent;
   -webkit-text-stroke: 1.5px var(--white);
   text-stroke: 1.5px var(--white);
+}
+
+.name-light-anchor::after {
+  content: '';
+  position: absolute;
+  top: calc(100% + 0.12em);
+  left: 50%;
+  width: 1px;
+  height: clamp(90px, 19vh, 190px);
+  background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.28), transparent);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  animation: emitter-pulse 2.6s ease-in-out infinite;
 }
 
 .hero-copy {
@@ -353,15 +423,10 @@ footer a:focus-visible::after {
   position: relative;
   min-height: 150svh;
   overflow: hidden;
-  background: linear-gradient(
-    180deg,
-    var(--black) 0%,
-    #050505 28%,
-    #171716 50%,
-    #757572 69%,
-    #d8d8d3 82%,
-    var(--white) 91%
-  );
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 50% 33%, rgba(255, 255, 255, 0.055), transparent 34%),
+    var(--black);
   isolation: isolate;
 }
 
@@ -391,8 +456,8 @@ footer a:focus-visible::after {
     rgba(255, 255, 255, 1) 0 0.6%,
     rgba(255, 255, 255, 0.96) 0.8%,
     rgba(255, 255, 255, 0.38) 8%,
-    rgba(255, 255, 255, 0.12) 23%,
-    transparent 62%
+    rgba(255, 255, 255, 0.08) 23%,
+    transparent 54%
   );
   filter: blur(2px);
   transform: translate(-50%, -50%);
@@ -543,7 +608,7 @@ footer a:focus-visible::after {
   flex-direction: column;
   justify-content: flex-end;
   padding: 70px clamp(24px, 5vw, 80px) 80px;
-  color: var(--black);
+  color: var(--white);
 }
 
 .finale-label,
@@ -572,7 +637,8 @@ footer a:focus-visible::after {
 
 .finale-meta {
   padding-top: 24px;
-  border-top: 1px solid rgba(5, 5, 5, 0.3);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
 }
 
 .finale-meta p {
@@ -586,9 +652,9 @@ footer {
   align-items: center;
   gap: 24px;
   padding: 0 32px;
-  color: rgba(5, 5, 5, 0.55);
-  background: var(--white);
-  border-top: 1px solid rgba(5, 5, 5, 0.28);
+  color: var(--muted);
+  background: var(--black);
+  border-top: 1px solid var(--line);
 }
 
 footer p {
@@ -597,7 +663,7 @@ footer p {
 
 footer a {
   position: relative;
-  color: var(--black);
+  color: var(--white);
 }
 
 @keyframes breathe {
@@ -608,6 +674,11 @@ footer a {
 @keyframes descend {
   0%, 100% { transform: translateY(-3px); }
   50% { transform: translateY(5px); }
+}
+
+@keyframes emitter-pulse {
+  0%, 100% { opacity: 0.34; transform: scaleY(0.72); }
+  50% { opacity: 1; transform: scaleY(1); }
 }
 
 @keyframes slow-rotation {
@@ -647,6 +718,68 @@ footer a {
     animation-timeline: view();
     animation-range: entry 10% cover 35%;
   }
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-journey {
+    animation: journey-visibility linear both;
+    animation-timeline: scroll(root);
+  }
+
+  .journey-trail {
+    animation: journey-trace linear both;
+    animation-timeline: scroll(root);
+  }
+
+  .journey-pulse {
+    animation: journey-fall linear both;
+    animation-timeline: scroll(root);
+  }
+
+  .journey-flare {
+    animation: journey-impact linear both;
+    animation-timeline: scroll(root);
+  }
+
+  .name-light-anchor::after {
+    animation: name-release linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+@keyframes journey-visibility {
+  0%, 5% { opacity: 0; }
+  9%, 76% { opacity: 0.9; }
+  81%, 100% { opacity: 0; }
+}
+
+@keyframes journey-trace {
+  0%, 7% { transform: scaleY(0); opacity: 0; }
+  18% { transform: scaleY(0.22); opacity: 0.72; }
+  62% { transform: scaleY(0.7); opacity: 0.58; }
+  77% { transform: scaleY(1); opacity: 1; }
+  81%, 100% { transform: scaleY(1); opacity: 0; }
+}
+
+@keyframes journey-fall {
+  0%, 7% { transform: translate(-50%, 0); opacity: 0; }
+  10% { transform: translate(-50%, 0); opacity: 1; }
+  62% { transform: translate(-50%, 36vh); opacity: 0.92; }
+  77% { transform: translate(-50%, 37vh); opacity: 1; }
+  79%, 100% { transform: translate(-50%, 37vh) scaleY(0.1); opacity: 0; }
+}
+
+@keyframes journey-impact {
+  0%, 74% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+  77% { opacity: 1; transform: translate(-50%, -50%) scale(0.25); }
+  80% { opacity: 0.85; transform: translate(-50%, -50%) scale(18); }
+  84%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(42); }
+}
+
+@keyframes name-release {
+  0%, 3% { opacity: 0; transform: scaleY(0); }
+  9% { opacity: 1; transform: scaleY(1); }
+  24%, 100% { opacity: 0; transform: scaleY(1.45); }
 }
 
 @keyframes burst-expand {

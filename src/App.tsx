@@ -5,6 +5,12 @@ const stacks = ['TypeScript + JavaScript', 'React', 'NextJS', 'Python', 'C']
 function App() {
   return (
     <main className="portfolio">
+      <div className="scroll-journey" aria-hidden="true">
+        <span className="journey-trail" />
+        <span className="journey-pulse" />
+        <span className="journey-flare" />
+      </div>
+
       <header className="site-header">
         <a className="wordmark" href="#top" aria-label="Sangmoon Park, top">
           SP<span className="wordmark-dot">.</span>
@@ -28,7 +34,7 @@ function App() {
           <p className="eyebrow">WEB DEVELOPER</p>
           <h1 id="hero-title">
             <span>SANGMOON</span>
-            <span className="outline-text">PARK</span>
+            <span className="outline-text name-light-anchor">PARK</span>
           </h1>
           <p className="hero-copy">
             I design and build clear, enduring experiences for the web.
