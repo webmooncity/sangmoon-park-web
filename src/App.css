@@ -91,6 +91,7 @@ footer {
   min-width: 0;
   align-self: center;
   padding: 7vh clamp(32px, 6vw, 110px);
+  transform: translateY(-0.6em);
 }
 
 .eyebrow {
@@ -108,7 +109,7 @@ footer {
 
 h1 {
   margin: 0;
-  font-size: clamp(5.25rem, 12.6vw, 13.2rem);
+  font-size: clamp(5.25rem, 12.6vw, 9.24rem);
   font-weight: 500;
   line-height: 0.72;
   letter-spacing: -0.075em;
@@ -134,8 +135,19 @@ h1 span {
 }
 
 .scroll-arrow {
+  position: fixed;
+  z-index: 30;
+  right: max(clamp(32px, 6vw, 110px), calc((100vw - 1600px) / 2 + 110px));
+  bottom: 24px;
+  pointer-events: none;
   font-size: 1.4rem;
+  transition: opacity 220ms ease, visibility 220ms ease;
   animation: descend 1.8s ease-in-out infinite;
+}
+
+.scroll-arrow-hidden {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .profile {
@@ -170,11 +182,12 @@ h1 span {
 .profile-main h2 {
   max-width: 950px;
   margin: 0;
-  font-size: clamp(2.9rem, 5.6vw, 6rem);
+  font-size: clamp(2.9rem, 5.6vw, 4.2rem);
   font-family: var(--kr-display);
   font-weight: 500;
   line-height: 1.08;
   letter-spacing: -0.055em;
+  transform: translateY(-1.45em);
   word-break: keep-all;
 }
 
@@ -263,7 +276,7 @@ h1 span {
 
 .stack-list strong {
   font-family: var(--display);
-  font-size: clamp(1.8rem, 3.3vw, 3.6rem);
+  font-size: clamp(1.8rem, 3.3vw, 2.52rem);
   font-weight: 500;
   letter-spacing: -0.055em;
 }
@@ -309,7 +322,7 @@ h1 span {
 .contact-row a {
   margin: 0;
   width: fit-content;
-  font-size: clamp(1rem, 1.55vw, 1.35rem);
+  font-size: clamp(1rem, 1.55vw, 1rem);
   font-family: var(--display);
   font-weight: 500;
   letter-spacing: -0.025em;
@@ -345,7 +358,7 @@ footer a:focus-visible::after {
   position: relative;
   view-timeline-name: --singularity-view;
   view-timeline-axis: block;
-  min-height: 150svh;
+  min-height: 0;
   overflow: hidden;
   border-top: 1px solid var(--line);
   background: var(--black);
@@ -608,10 +621,10 @@ footer a:focus-visible::after {
   position: relative;
   z-index: 3;
   display: flex;
-  min-height: 62svh;
+  min-height: 0;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 70px clamp(24px, 5vw, 80px) 80px;
+  justify-content: flex-start;
+  padding: 24px clamp(24px, 5vw, 80px) 36px;
   color: var(--white);
 }
 
@@ -624,28 +637,45 @@ footer a:focus-visible::after {
 }
 
 .finale-copy h2 {
-  margin: 52px 0 56px;
-  font-size: clamp(4.2rem, 10.8vw, 11.2rem);
+  margin: clamp(38px, 4vw, 56px) 0 clamp(42px, 4.2vw, 60px);
+  font-size: clamp(3.2rem, 7.8vw, 8rem);
   color: var(--white);
   font-family: var(--display);
   font-weight: 500;
-  line-height: 0.78;
-  letter-spacing: -0.075em;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
   text-shadow: none;
 }
 
-.finale-copy h2 span {
+.finale-copy h2 > span {
   display: block;
 }
 
-.finale-copy h2 span:last-child {
+.finale-copy h2 > span:last-child {
   text-align: right;
 }
 
+.finale-copy h2 > .finale-heading-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.16em;
+}
+
 .finale-meta {
+  position: relative;
   padding-top: 24px;
-  border-top: 1px solid var(--line);
   color: var(--muted);
+}
+
+.finale-meta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(100vw, 1600px);
+  height: 1px;
+  background: var(--line);
+  transform: translateX(-50%);
 }
 
 .finale-meta p {
@@ -785,6 +815,12 @@ footer a {
   to { --disk-light-angle: 360deg; }
 }
 
+@media (min-width: 901px) {
+  h1 {
+    font-size: clamp(4.8rem, 9.8vw, 7.7rem);
+  }
+}
+
 @media (max-width: 900px) {
   .portfolio {
     border-inline: 0;
@@ -823,9 +859,6 @@ footer a {
     min-height: 560px;
   }
 
-  .finale-copy h2 {
-    font-size: clamp(4rem, 12.5vw, 7.2rem);
-  }
 }
 
 @media (max-width: 640px) {
@@ -868,7 +901,7 @@ footer a {
 
   h1 {
     max-width: 100%;
-    font-size: clamp(2.65rem, 13.5vw, 4.2rem);
+    font-size: clamp(2.65rem, 13.5vw, 2.94rem);
     line-height: 0.78;
     letter-spacing: -0.085em;
   }
@@ -888,6 +921,8 @@ footer a {
   }
 
   .scroll-arrow {
+    right: 44px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
     display: inline-flex;
     width: 18px;
     flex: 0 0 18px;
@@ -911,7 +946,7 @@ footer a {
   }
 
   .profile-main h2 {
-    font-size: clamp(2.3rem, 11vw, 3.2rem);
+    font-size: clamp(2.3rem, 11vw, 2.3rem);
   }
 
   .detail-block {
@@ -933,7 +968,7 @@ footer a {
   }
 
   .stack-list strong {
-    font-size: clamp(1.7rem, 8.8vw, 2.75rem);
+    font-size: clamp(1.7rem, 8.8vw, 1.925rem);
   }
 
   .stack-list .stack-combined {
@@ -941,7 +976,7 @@ footer a {
     width: max-content;
     flex-direction: column;
     align-items: center;
-    font-size: clamp(1.7rem, 8.8vw, 2.75rem);
+    font-size: clamp(1.7rem, 8.8vw, 1.925rem);
     line-height: 0.92;
     letter-spacing: -0.055em;
   }
@@ -972,7 +1007,7 @@ footer a {
   }
 
   .singularity {
-    min-height: 132svh;
+    min-height: 0;
   }
 
   .singularity-topline {
@@ -1018,8 +1053,8 @@ footer a {
   }
 
   .finale-copy {
-    min-height: 58svh;
-    padding: 54px 18px 56px;
+    min-height: 0;
+    padding: 24px 18px 32px;
   }
 
   .finale-label,
@@ -1033,12 +1068,12 @@ footer a {
   }
 
   .finale-copy h2 {
-    margin: 44px 0;
-    font-size: clamp(3.45rem, 17.5vw, 5.5rem);
-    line-height: 0.82;
+    margin: 36px 0 40px;
+    font-size: clamp(2.75rem, 12vw, 3.5rem);
+    line-height: 0.84;
   }
 
-  .finale-copy h2 span:last-child {
+  .finale-copy h2 > span:last-child {
     text-align: left;
   }
 

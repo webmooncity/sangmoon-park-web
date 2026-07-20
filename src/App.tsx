@@ -1,8 +1,26 @@
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
 const stacks = ['TypeScript + JavaScript', 'React', 'NextJS', 'Python', 'C']
 
 function App() {
+  const footerRef = useRef<HTMLElement>(null)
+  const [isFooterVisible, setIsFooterVisible] = useState(false)
+
+  useEffect(() => {
+    const footer = footerRef.current
+
+    if (!footer) return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsFooterVisible(entry.isIntersecting)
+    })
+
+    observer.observe(footer)
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <main className="portfolio">
       <header className="site-header">
@@ -30,7 +48,12 @@ function App() {
 
         <a className="scroll-cue" href="#profile" aria-label="Scroll to profile">
           <span>SCROLL TO EXPLORE</span>
-          <span className="scroll-arrow" aria-hidden="true">↓</span>
+          <span
+            className={`scroll-arrow${isFooterVisible ? ' scroll-arrow-hidden' : ''}`}
+            aria-hidden="true"
+          >
+            ↓
+          </span>
         </a>
       </section>
 
@@ -137,7 +160,10 @@ function App() {
             <span>TO AN INFINITE WEB</span>
           </div>
           <h2 id="singularity-title">
-            <span>CODE BECOMES</span>
+            <span className="finale-heading-line">
+              <span>CODE</span>
+              <span>BECOMES</span>
+            </span>
             <span>EXPERIENCE.</span>
           </h2>
           <div className="finale-meta">
@@ -147,7 +173,7 @@ function App() {
         </div>
       </section>
 
-      <footer>
+      <footer ref={footerRef}>
         <p>© 2026 SANGMOON PARK</p>
         <p>DESIGNED &amp; BUILT IN SEOUL</p>
         <a href="#top">BACK TO TOP ↑</a>
