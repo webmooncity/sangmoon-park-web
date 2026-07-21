@@ -104,7 +104,7 @@ footer {
 .hero-meteors {
   position: absolute;
   z-index: 0;
-  inset: -16% 1% -18% 4%;
+  inset: 0 14.2857% 0 0;
   overflow: hidden;
   pointer-events: none;
 }
@@ -122,8 +122,8 @@ footer {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.08) 48%,
-    rgba(255, 255, 255, 0.72) 92%,
+    rgba(255, 255, 255, 0.13) 44%,
+    rgba(255, 255, 255, 0.88) 90%,
     #fff 100%
   );
   transform-origin: right center;
@@ -139,23 +139,25 @@ footer {
   height: 2px;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.56);
+  box-shadow: 0 0 3px #fff, 0 0 7px rgba(255, 255, 255, 0.74);
   transform: translateY(-50%);
 }
 
 .hero-meteor-1 {
-  top: 6%;
-  left: 56%;
+  --meteor-distance-x: 54px;
+  --meteor-distance-y: 58px;
+  top: 27%;
+  left: 52%;
   width: 88px;
   animation-delay: -1.2s;
 }
 
 .hero-meteor-2 {
   --meteor-angle: 55deg;
-  --meteor-distance-x: 58px;
-  --meteor-distance-y: 82px;
-  top: 37%;
-  left: 81%;
+  --meteor-distance-x: 42px;
+  --meteor-distance-y: 52px;
+  top: 34%;
+  left: 72%;
   width: 58px;
   opacity: 0;
   animation-duration: 10.4s;
@@ -164,10 +166,10 @@ footer {
 
 .hero-meteor-3 {
   --meteor-angle: 47deg;
-  --meteor-distance-x: 48px;
-  --meteor-distance-y: 66px;
-  top: 68%;
-  left: 43%;
+  --meteor-distance-x: 38px;
+  --meteor-distance-y: 44px;
+  top: 22%;
+  left: 31%;
   width: 46px;
   animation-duration: 9.7s;
   animation-delay: -3.8s;
@@ -285,6 +287,10 @@ h1 > span:first-child {
   letter-spacing: -0.055em;
   transform: translateY(-1.45em);
   word-break: keep-all;
+}
+
+.quote-mobile {
+  display: none;
 }
 
 .profile-note {
@@ -540,11 +546,12 @@ footer a:focus-visible::after {
 .blackhole-system span {
   top: 50%;
   left: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.72);
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .blackhole-aura {
+  opacity: 0.32;
   width: min(760px, 80vw);
   aspect-ratio: 1;
   border-radius: 50%;
@@ -553,6 +560,7 @@ footer a:focus-visible::after {
 }
 
 .blackhole-lens {
+  opacity: 0.62;
   width: min(430px, 54vw);
   aspect-ratio: 1;
   border: 1px solid rgba(245, 245, 242, 0.32);
@@ -563,28 +571,34 @@ footer a:focus-visible::after {
 }
 
 .blackhole-disk {
-  width: min(620px, 76vw);
-  height: min(122px, 14vw);
+  opacity: 1;
+  width: min(650px, 82vw);
+  height: min(128px, 16.14vw);
+  aspect-ratio: 5.08 / 1;
   border-radius: 50%;
-  transform: translate(-50%, -50%) rotate(-7deg) scaleX(0.72);
+  transform-box: border-box;
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(0deg) scaleX(1);
 }
 
 .blackhole-disk-back {
   z-index: 1;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  overflow: visible;
+  border: 1px solid rgba(255, 255, 255, 0.42);
   background: radial-gradient(
     ellipse at center,
     transparent 0 58%,
-    rgba(255, 255, 255, 0.02) 72%,
-    rgba(255, 255, 255, 0.06) 88%,
-    rgba(255, 255, 255, 0.16) 100%
+    rgba(255, 255, 255, 0.025) 72%,
+    rgba(255, 255, 255, 0.1) 88%,
+    rgba(255, 255, 255, 0.24) 100%
   );
   box-shadow:
-    0 0 3px rgba(255, 255, 255, 0.24),
-    inset 0 0 12px rgba(255, 255, 255, 0.08);
+    0 0 4px rgba(255, 255, 255, 0.42),
+    inset 0 0 12px rgba(255, 255, 255, 0.12);
 }
 
-.blackhole-disk-back::before {
+.blackhole-disk-back::before,
+.blackhole-disk-back::after {
   content: '';
   position: absolute;
   inset: -5px;
@@ -592,33 +606,53 @@ footer a:focus-visible::after {
   background: conic-gradient(
     from var(--disk-light-angle),
     transparent 0deg 54deg,
-    rgba(255, 255, 255, 0.29) 62deg,
-    #fff 72deg 92deg,
-    rgba(255, 255, 255, 0.88) 100deg,
+    rgba(245, 245, 242, 0.56) 62deg,
+    var(--white) 69deg 98deg,
+    rgba(245, 245, 242, 0.78) 104deg,
     transparent 112deg 240deg,
-    rgba(255, 255, 255, 0.31) 250deg,
-    #fff 266deg 300deg,
-    rgba(255, 255, 255, 0.94) 308deg,
+    rgba(245, 245, 242, 0.58) 250deg,
+    var(--white) 261deg 305deg,
+    rgba(245, 245, 242, 0.82) 313deg,
     transparent 324deg 360deg
   );
   opacity: 1;
   filter:
-    brightness(1.3)
-    contrast(1.12)
-    drop-shadow(0 0 2px #fff)
-    drop-shadow(0 0 5px #fff);
-  mask-image: radial-gradient(closest-side, transparent calc(100% - 12px), #000 calc(100% - 8px));
-  animation: blackhole-disk-light-orbit 2.8s linear infinite;
+    drop-shadow(0 0 2px rgba(245, 245, 242, 0.56))
+    drop-shadow(0 0 6px rgba(245, 245, 242, 0.34));
+  -webkit-mask-image: radial-gradient(closest-side, transparent calc(100% - 15px), #000 calc(100% - 10px));
+  mask-image: radial-gradient(closest-side, transparent calc(100% - 15px), #000 calc(100% - 10px));
+  animation: blackhole-disk-light-orbit 3.1s linear infinite;
+}
+
+.blackhole-disk-back::after {
+  inset: 4px 16px;
+  background: conic-gradient(
+    from var(--disk-light-angle),
+    transparent 0deg 34deg,
+    rgba(245, 245, 242, 0.54) 48deg,
+    var(--white) 62deg 83deg,
+    transparent 98deg 216deg,
+    rgba(245, 245, 242, 0.58) 232deg,
+    var(--white) 248deg 276deg,
+    transparent 294deg 360deg
+  );
+  filter:
+    drop-shadow(0 0 4px rgba(245, 245, 242, 0.46));
+  -webkit-mask-image: radial-gradient(closest-side, transparent calc(100% - 9px), #000 calc(100% - 6px));
+  mask-image: radial-gradient(closest-side, transparent calc(100% - 9px), #000 calc(100% - 6px));
+  animation-duration: 4.4s;
+  animation-direction: reverse;
 }
 
 .blackhole-disk-front {
   z-index: 5;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.62);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.82);
   clip-path: inset(50% -8px -12px -8px);
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.38));
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.56));
 }
 
 .blackhole-ticks {
+  opacity: 0.92;
   z-index: 2;
   width: min(300px, 39vw);
   aspect-ratio: 1;
@@ -629,10 +663,13 @@ footer a:focus-visible::after {
     transparent 0.45deg 8deg
   );
   filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.72));
+  -webkit-mask-image: radial-gradient(circle, transparent 0 73%, black 74% 76%, transparent 77%);
   mask-image: radial-gradient(circle, transparent 0 73%, black 74% 76%, transparent 77%);
+  animation: blackhole-spin 14s linear infinite;
 }
 
 .blackhole-horizon {
+  opacity: 1;
   z-index: 4;
   width: 92px;
   aspect-ratio: 1;
@@ -646,11 +683,14 @@ footer a:focus-visible::after {
 }
 
 .blackhole-scan {
+  opacity: 0.82;
   z-index: 6;
   width: var(--orbit-size);
   aspect-ratio: 1;
   border: 1px var(--orbit-style, dashed) var(--orbit-line);
   border-radius: 50%;
+  animation: blackhole-spin-reverse var(--orbit-speed) linear var(--orbit-delay) infinite;
+  animation-direction: var(--orbit-direction, normal);
 }
 
 .blackhole-scan-1 {
@@ -709,7 +749,7 @@ footer a:focus-visible::after {
   aspect-ratio: 1;
   border-radius: 50%;
   background: white;
-  box-shadow: 0 0 5px 2px #fff, 0 0 14px 5px rgba(255, 255, 255, 0.64);
+  box-shadow: 0 0 6px 2px #fff, 0 0 16px 5px rgba(255, 255, 255, 0.78);
   transform: translateX(-50%);
 }
 
@@ -835,90 +875,6 @@ footer a {
   50% { transform: translateY(5px); }
 }
 
-@supports (animation-timeline: view()) {
-  .blackhole-aura {
-    animation: blackhole-aura-in linear both;
-    animation-timeline: --singularity-view;
-    animation-range: entry 0% exit 58%;
-  }
-
-  .blackhole-lens {
-    animation: blackhole-lens-in linear both;
-    animation-timeline: --singularity-view;
-    animation-range: entry 0% exit 58%;
-  }
-
-  .blackhole-disk {
-    animation: blackhole-disk-in linear both;
-    animation-timeline: --singularity-view;
-    animation-range: entry 0% exit 58%;
-  }
-
-  .blackhole-horizon {
-    animation: blackhole-horizon-in linear both;
-    animation-timeline: --singularity-view;
-    animation-range: entry 0% exit 58%;
-  }
-
-  .blackhole-ticks {
-    animation: blackhole-ticks-in linear both, blackhole-spin 14s linear infinite;
-    animation-timeline: --singularity-view, auto;
-    animation-range: entry 0% exit 58%, normal;
-  }
-
-  .blackhole-scan {
-    animation:
-      blackhole-scan-in linear both,
-      blackhole-spin-reverse var(--orbit-speed) linear var(--orbit-delay) infinite;
-    animation-direction: normal, var(--orbit-direction, normal);
-    animation-timeline: --singularity-view, auto;
-    animation-range: entry 0% exit 58%, normal;
-  }
-
-}
-
-@keyframes blackhole-aura-in {
-  0%, 18% { opacity: 0; transform: translate(-50%, -50%) scale(0.68); }
-  44% { opacity: 0.48; transform: translate(-50%, -50%) scale(0.96); }
-  80% { opacity: 0.24; transform: translate(-50%, -50%) scale(1.02); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.08); }
-}
-
-@keyframes blackhole-lens-in {
-  0%, 22% { opacity: 0; transform: translate(-50%, -50%) scale(0.72); }
-  46% { opacity: 0.62; transform: translate(-50%, -50%) scale(1); }
-  82% { opacity: 0.38; transform: translate(-50%, -50%) scale(1.03); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.06); }
-}
-
-@keyframes blackhole-disk-in {
-  0%, 22% { opacity: 0; transform: translate(-50%, -50%) rotate(-7deg) scaleX(0.1); }
-  46% { opacity: 1; transform: translate(-50%, -50%) rotate(-7deg) scaleX(1); }
-  82% { opacity: 0.74; transform: translate(-50%, -50%) rotate(-4deg) scaleX(1.03); }
-  100% { opacity: 0; transform: translate(-50%, -50%) rotate(0) scaleX(0.88); }
-}
-
-@keyframes blackhole-horizon-in {
-  0%, 24% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-  46% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  84% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.94); }
-}
-
-@keyframes blackhole-ticks-in {
-  0%, 26% { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
-  48% { opacity: 0.92; transform: translate(-50%, -50%) scale(1); }
-  82% { opacity: 0.62; transform: translate(-50%, -50%) scale(1.04); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.08); }
-}
-
-@keyframes blackhole-scan-in {
-  0%, 30% { opacity: 0; transform: translate(-50%, -50%) scale(0.82); }
-  50% { opacity: 0.92; transform: translate(-50%, -50%) scale(1); }
-  84% { opacity: 0.58; transform: translate(-50%, -50%) scale(1.03); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.06); }
-}
-
 @keyframes blackhole-spin {
   to { rotate: 360deg; }
 }
@@ -1026,6 +982,10 @@ footer a {
     right: 64px;
   }
 
+  .hero-meteors {
+    right: 64px;
+  }
+
   .profile {
     grid-template-columns: 64px 1fr;
   }
@@ -1087,17 +1047,18 @@ footer a {
   }
 
   .hero-meteors {
-    inset: -10% 4% -12% 0;
+    inset: 0 38px 0 0;
   }
 
   .hero-meteor-1 {
-    left: 51%;
+    top: 29%;
+    left: 45%;
     width: 64px;
   }
 
   .hero-meteor-2 {
-    top: 42%;
-    left: 75%;
+    top: 36%;
+    left: 68%;
     width: 44px;
   }
 
@@ -1158,6 +1119,14 @@ footer a {
 
   .profile-main h2 {
     font-size: clamp(2.3rem, 11vw, 2.3rem);
+  }
+
+  .quote-desktop {
+    display: none;
+  }
+
+  .quote-mobile {
+    display: inline;
   }
 
   .detail-block {
@@ -1248,11 +1217,6 @@ footer a {
 
   .blackhole-lens {
     width: 68vw;
-  }
-
-  .blackhole-disk {
-    width: 82vw;
-    height: 18vw;
   }
 
   .blackhole-ticks {

@@ -70,9 +70,20 @@ function App() {
 
         <div className="profile-main">
           <h2 id="profile-title">
-            “복잡함을 덜어내고,
-            <br />
-            본질에 가까운 웹을 만듭니다.”
+            <span className="quote-desktop">
+              “복잡함을 덜어내고,
+              <br />
+              본질에 가까운 웹을 만듭니다.”
+            </span>
+            <span className="quote-mobile">
+              “복잡함을
+              <br />
+              덜어내고,
+              <br />
+              본질에 가까운
+              <br />
+              웹을 만듭니다.”
+            </span>
           </h2>
 
         </div>
@@ -132,9 +143,43 @@ function App() {
         </article>
       </section>
 
+      <section className="profile problem-solving" aria-labelledby="problem-solving-title">
+        <div className="section-label">
+          <span>05</span>
+          <p>APPROACH</p>
+        </div>
+
+        <div className="profile-main">
+          <h2 id="problem-solving-title">
+            <span className="quote-desktop">
+              “문제를 명확히 정의하고,
+              <br />
+              가장 단순한 해답을 설계합니다.”
+            </span>
+            <span className="quote-mobile">
+              “문제를 명확히
+              <br />
+              정의하고,
+              <br />
+              가장 단순한 해답을
+              <br />
+              설계합니다.”
+            </span>
+          </h2>
+        </div>
+
+        <div className="profile-note">
+          <p>
+            Define clearly. Solve deliberately.
+            <br />
+            From complexity to a useful answer.
+          </p>
+        </div>
+      </section>
+
       <section className="singularity" aria-labelledby="singularity-title">
         <div className="singularity-topline">
-          <span>05</span>
+          <span>06</span>
           <p>ORIGIN / OUTPUT</p>
           <p>SCROLL EVENT — 00:00:01</p>
         </div>
