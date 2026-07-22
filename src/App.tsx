@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 
 const stacks = ['TypeScript + JavaScript', 'React', 'NextJS', 'Python', 'C']
@@ -228,6 +229,7 @@ function App() {
         <p>DESIGNED &amp; BUILT IN SEOUL</p>
         <a href="#top">BACK TO TOP ↑</a>
       </footer>
+      <Analytics />
     </main>
   )
 }
